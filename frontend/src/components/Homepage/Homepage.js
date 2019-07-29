@@ -12,7 +12,6 @@ function Hompage() {
             id="video-carousel-example"
             className="carousel slide carousel-fade"
             data-ride="carousel"
-            //   className="xxxx"
           >
             <Navbar />
             {/* <!--Indicators--> */}
@@ -37,7 +36,7 @@ function Hompage() {
               <div className="carousel-item active">
                 {/* <video
                 className="video-fluid"
-                autoplay
+                autoPlay
                 loop
                 muted
                 style={{ height: '100%', width: '100%', objectFit: 'contain' }}
@@ -45,8 +44,8 @@ function Hompage() {
                 <source
                   // src="https://mdbootstrap.com/img/video/Tropical.mp4"
                   src="https://www.youtube.com/watch?v=ppGA3iMhdGs"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  frameBorder="0"
+                  allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture"
                   type="video/mp4"
                 />
               </video> */}
@@ -55,13 +54,13 @@ function Hompage() {
                   // height="315"
                   className="video-fluid"
                   src="https://www.youtube.com/embed/2N80qcVvzUU"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
+                  frameBorder="0"
+                  allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
               </div>
               <div className="carousel-item">
-                <video className="video-fluid" autoplay loop muted>
+                <video className="video-fluid" autoPlay loop muted>
                   <source
                     src="https://mdbootstrap.com/img/video/forest.mp4"
                     type="video/mp4"
@@ -69,7 +68,7 @@ function Hompage() {
                 </video>
               </div>
               <div className="carousel-item">
-                <video className="video-fluid" autoplay loop muted>
+                <video className="video-fluid" autoPlay loop muted>
                   <source
                     src="https://mdbootstrap.com/img/video/Agua-natural.mp4"
                     type="video/mp4"
