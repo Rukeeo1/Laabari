@@ -31,45 +31,4 @@ function Navbar() {
   );
 }
 
-/**
-       <nav class="navbar navbar-expand-md bg-light navbar-dark">
-        <a class="navbar-brand" href="#">
-          Labaari
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavbar"
-        >
-          <span class="navbar-toggler-icon" />
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="collapsibleNavbar"
-        >
-          <ul class="navbar-nav">
-            {/* <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
-            </a>
-          </li> */
-//   <button class="btn btn-danger navbar-btn">Button</button>
-{
-  /* <li class="nav-item">
-            <a class="nav-link" href="#">
-              Sign Up
-            </a>
-          </li> */
-}
-//       <li class="nav-item btn btn-danger navbar-btn">
-//         <a class="nav-link" href="#" >
-//           Login
-//         </a>
-//       </li>
-//     </ul>
-//   </div>
-// </nav>
-// <hr style={{ color: 'white' }} />
-
 export default Navbar;
