@@ -6,7 +6,7 @@ function Navbar() {
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#" style={{color:'white'}}>
+          <a class="navbar-brand" href="#" style={{ color: 'white' }}>
             Labaari
           </a>
         </div>

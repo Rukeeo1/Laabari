@@ -3,11 +3,14 @@ import React from 'react';
 function Card() {
   return (
     <>
-      <div className="card card-deck" style={{ width: '300px',margin:"4px"}}>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
-          src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+          //   src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+          src="https://img.yts.lt/assets/images/movies/london_rampage_2018/medium-cover.jpg"
           alt="Card image"
+          width="210px"
+          height="315px"
         />
         <div className="card-img-overlay">
           <h4 className="card-title">John Doe</h4>
@@ -17,7 +20,7 @@ function Card() {
           </a>
         </div>
       </div>
-      <div className="card card-deck" style={{ width: '300px',margin:"4px" }}>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
@@ -31,7 +34,7 @@ function Card() {
           </a>
         </div>
       </div>
-      <div className="card card-deck" style={{ width: '300px', margin:"4px"}}>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
@@ -45,7 +48,7 @@ function Card() {
           </a>
         </div>
       </div>
-      <div className="card card-deck" style={{ width: '300px', margin:"4px" }}>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
@@ -59,7 +62,7 @@ function Card() {
           </a>
         </div>
       </div>
-      <div className="card card-deck" style={{ width: '300px', margin:"4px"}}>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
@@ -73,7 +76,7 @@ function Card() {
           </a>
         </div>
       </div>
-      <div className="card card-deck" style={{ width: '300px', margin:"4px"}}>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"

@@ -5,3 +5,26 @@
   color: brown;
   justify-content: space-around;
 }
+
+.card-deck{
+  /* border: 5px solid white; */
+  text-align: center;
+}
+
+.card-img-overlay{
+  color:white;
+  font-weight: bold;
+  text-align: center;
+   border: 5px solid white; 
+}
+
+.card-img-overlay:hover{
+  background-color: rgba(50, 115, 220, 0.3);
+border: 5px solid #efbb35; 
+
+}
+
+.card-title{
+  margin-top: 80px;
+}
+
