@@ -9,7 +9,6 @@ import './css/Login.css';
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
 
-
 class Login extends React.Component {
   constructor(props) {
     super(props);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../navbar/Navbar';
+// import Navbar from '../navbar/Navbar';
 import '../Homepage/Homepage.css';
 import Card from './Card';
 
@@ -13,7 +13,7 @@ function Hompage() {
             className="carousel slide carousel-fade"
             data-ride="carousel"
           >
-            <Navbar />
+            {/* <Navbar /> */}
             {/* <!--Indicators--> */}
             <ol className="carousel-indicators">
               <li

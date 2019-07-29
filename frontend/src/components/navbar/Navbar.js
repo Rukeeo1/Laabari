@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -25,7 +26,10 @@ function Navbar() {
           id="navbarTogglerDemo01"
         >
           <div className="ml-auto">
-            <button className="btn btn-danger navbar-btn">Sign In</button>
+            <Link to="/login">
+              {' '}
+              <button className="btn btn-danger navbar-btn">Sign In</button>
+            </Link>
           </div>
         </div>
       </nav>
