@@ -11,9 +11,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const userRouter = require('./routes/users');
+const morgan = require('morgan');
 
 mongoose
-  .connect('mongodb://localhost/labaari',  { useNewUrlParser: true } )
+  .connect('mongodb://localhost/labaari', { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to labarri');
   })
@@ -24,7 +25,7 @@ mongoose
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(morgan());
 app.use('/api/users', userRouter);
 
 const port = process.env.PORT || 3001;
