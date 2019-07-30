@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
+  
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
         <div className="navbar-header">
-          <a className="navbar-brand" href="#" style={{ color: 'white' }}>
+          <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             Labaari
-          </a>
+          </Link>
         </div>
         <button
           className="navbar-toggler"

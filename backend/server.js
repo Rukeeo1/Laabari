@@ -25,7 +25,7 @@ mongoose
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(morgan());
+app.use(morgan('combined'));
 app.use('/api/users', userRouter);
 
 const port = process.env.PORT || 3001;

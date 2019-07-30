@@ -1,13 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import {formValid} from './helper'
+import { formValid } from './helper';
 import { Link, Redirect } from 'react-router-dom';
 import './css/Login.css';
 //import NavBar from './NavBar';
 
 // console.log(localStorage);
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-
 
 class Login extends React.Component {
   constructor(props) {
@@ -32,7 +31,7 @@ class Login extends React.Component {
       const userPassword = this.state.password;
 
       axios
-        .get(`http://localhost:3000/user?email=${userEmail}`)
+        .get(`http://localhost:3001/api/users/` + userEmail)
         .then(response => {
           if (response.data.length === 0) {
             this.setState({
@@ -46,6 +45,7 @@ class Login extends React.Component {
           }
           //you can do a further password check here which i shall skip...
           this.setState({ redirect: true });
+
           const user = response.data[0];
           localStorage.setItem('user', JSON.stringify(user)); //store the item in local storage...
         })
@@ -126,13 +126,13 @@ class Login extends React.Component {
                 Remember Me?
               </p>
               <p>
-                {/* <Link to="/">Need Help?</Link> */}
+                <Link to="/">Need Help?</Link>
               </p>
             </div>
             <div className="createAccount">
               <button type="submit">Sign In</button>
               <small>
-                {/* New to Laabari?<Link to="/sign-up"> Sign up now.</Link> */}
+                New to Laabari?<Link to="/sign-up"> Sign up now.</Link>
               </small>
             </div>
           </form>
