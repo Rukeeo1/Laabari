@@ -8,7 +8,7 @@ function Card() {
           className="card-img-top"
           //   src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
           src="https://img.yts.lt/assets/images/movies/london_rampage_2018/medium-cover.jpg"
-          alt="Card image"
+          alt="Card"
           width="210px"
           height="315px"
         />
@@ -24,7 +24,21 @@ function Card() {
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
-          alt="Card image"
+          alt="Card"
+        />
+        <div className="card-img-overlay">
+          <h4 className="card-title">John Doe</h4>
+          <p className="card-text">Some example text.</p>
+          <a href="#" className="btn btn-primary">
+            See Profile
+          </a>
+        </div>
+      </div>
+      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
+        <img
+          className="card-img-top"
+          src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+          alt="Card"
         />
         <div className="card-img-overlay">
           <h4 className="card-title">John Doe</h4>
@@ -52,21 +66,7 @@ function Card() {
         <img
           className="card-img-top"
           src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
-          alt="Card image"
-        />
-        <div className="card-img-overlay">
-          <h4 className="card-title">John Doe</h4>
-          <p className="card-text">Some example text.</p>
-          <a href="#" className="btn btn-primary">
-            See Profile
-          </a>
-        </div>
-      </div>
-      <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
-        <img
-          className="card-img-top"
-          src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
-          alt="Card image"
+          alt="Card"
         />
         <div className="card-img-overlay">
           <h4 className="card-title">John Doe</h4>

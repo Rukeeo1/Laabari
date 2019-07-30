@@ -14,7 +14,7 @@ const myStore = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={rootReducer}>
+  <Provider store={myStore}>
     <App />
   </Provider>,//our app has now been subscribed..go to the page and access the global store
   document.getElementById('root')

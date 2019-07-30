@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 function Navbar() {
-  
+  const loginStatus = useSelector(state => state.loggedInReducer);
+  // const loginStatus = true
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -28,10 +29,18 @@ function Navbar() {
           id="navbarTogglerDemo01"
         >
           <div className="ml-auto">
-            <Link to="/login">
+            {loginStatus ? (
+              ''
+            ) : (
+              <Link to="/login">
+                {' '}
+                <button className="btn btn-danger navbar-btn">Sign In</button>
+              </Link>
+            )}
+            {/* <Link to="/login">
               {' '}
               <button className="btn btn-danger navbar-btn">Sign In</button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </nav>
