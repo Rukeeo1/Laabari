@@ -168,7 +168,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogin: () => dispatch(alternateLogin)
+    onLogin: () => dispatch(alternateLogin())
   };
 };
 

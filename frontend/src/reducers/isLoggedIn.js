@@ -6,5 +6,5 @@ const loggedInReducer = (state = false, action) => {
       return state;
   }
 };
-console.log('i checked this file')
+
 export default loggedInReducer;
