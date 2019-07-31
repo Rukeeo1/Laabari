@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { formValid } from './helper';
 import { Link, Redirect } from 'react-router-dom';
-//import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { alternateLogin } from '../../actions/index';
 import './css/Login.css';
@@ -92,10 +91,6 @@ class Login extends React.Component {
   };
 
   render() {
-    //the following are from state...
-    // const loginStatus = useSelector(state => state.isLoggedIn);
-    // const dispatch = useDispatch();
-
     const { formErrors } = this.state;
     const loggedIn = this.state.redirect;
 

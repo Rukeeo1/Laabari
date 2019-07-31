@@ -1,27 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { formValid } from './helpers/helper';
 import './css/SignUp.css';
 
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
-const formValid = ({ formErrors, ...rest }) => {
-  let valid = true;
-
-  //validate form errors being empty
-  Object.values(formErrors).forEach(value => {
-    value.length > 0 && (valid = false);
-  });
-
-  //validate form when no values are passed in....
-  Object.values(rest).forEach(value => {
-    value === null && (valid = false);
-  });
-
-  return valid;
-};
-
-class Form extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -153,4 +138,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default SignUp;
