@@ -52,6 +52,7 @@ function validateUser(user) {
     email: Joi.string().email(),
     mobile: Joi.string().regex(/^\d{4}-\d{3}-\d{4}$/),
     isSubscribed: Joi.boolean(),
+    password:Joi.string(),
     date: Joi.date()
   };
 
