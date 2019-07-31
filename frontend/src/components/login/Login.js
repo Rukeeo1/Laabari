@@ -150,7 +150,7 @@ class Login extends React.Component {
             <div className="createAccount">
               <button type="submit">Sign In</button>
               <small>
-                New to Laabari?<Link to="/sign-up"> Sign up now.</Link>
+                New to Laabari?<Link to="/signup"> Sign up now.</Link>
               </small>
             </div>
           </form>
