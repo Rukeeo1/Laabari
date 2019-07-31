@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
 //create the mongoose schema
 const userSchema = new mongoose.Schema({
@@ -11,7 +12,9 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    minlength: 8
+    minlength: 8,
+    required: true,
+    unique: true
   },
   mobile: {
     type: String,
@@ -35,6 +38,9 @@ const userSchema = new mongoose.Schema({
     minlength: 6
   }
 });
+
+//add the user plugin...
+userSchema.plugin(uniqueValidator);
 
 //use the schema above to create a the user model
 const UserModel = mongoose.model('User', userSchema);

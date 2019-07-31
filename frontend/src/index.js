@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-//you license to create a store
-import { createStore } from 'redux';
+import { createStore } from 'redux'; //you license to create a store
 import rootReducer from './reducers/index'; //the store admin...reducer in chief
 import { Provider } from 'react-redux'; // let's see this guy like the store website...that provides acess to the store..
 
@@ -16,7 +15,7 @@ const myStore = createStore(
 ReactDOM.render(
   <Provider store={myStore}>
     <App />
-  </Provider>,//our app has now been subscribed..go to the page and access the global store
+  </Provider>, //our app has now been subscribed..go to the page and access the global store
   document.getElementById('root')
 );
 

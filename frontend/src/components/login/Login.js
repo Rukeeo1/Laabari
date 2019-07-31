@@ -2,9 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import { formValid } from './helper';
 import { Link, Redirect } from 'react-router-dom';
+//import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { alternateLogin } from '../../actions/index';
 import './css/Login.css';
 //import NavBar from './NavBar';
 
+/**
+ what's my goal here...on sucessful login
+ i want to be able to upate the state...
+ so to do this right on sucessful log,
+ i want to dispatch
+
+ i was obviously just able to acess the global state
+ now i need to dispatch actions to the global state...
+ */
 // console.log(localStorage);
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
@@ -22,6 +34,7 @@ class Login extends React.Component {
       redirect: false
     };
   }
+  //bring in the state...
 
   handleSubmit = e => {
     e.preventDefault();
@@ -45,7 +58,7 @@ class Login extends React.Component {
           }
           //you can do a further password check here which i shall skip...
           this.setState({ redirect: true });
-
+          this.props.onLogin(); //this is tobe called on login sucess
           const user = response.data[0];
           localStorage.setItem('user', JSON.stringify(user)); //store the item in local storage...
         })
@@ -79,17 +92,22 @@ class Login extends React.Component {
   };
 
   render() {
+    //the following are from state...
+    // const loginStatus = useSelector(state => state.isLoggedIn);
+    // const dispatch = useDispatch();
+
     const { formErrors } = this.state;
     const loggedIn = this.state.redirect;
 
     if (loggedIn) {
       return <Redirect to="/videos-gallery" />;
     }
+    console.log(this.props.loginStatus, 'this');
     return (
       <div className="wrapper">
         {/* <NavBar /> */}
         <div className="form-wrapper">
-          <h1>Login</h1>
+          <h1>Login{this.props.loginStatus ? '' : 'rukee'}</h1>
           {/* form starts here .... */}
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="Email">
@@ -142,4 +160,19 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    loginStatus: state.isLoggedIn
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: () => dispatch(alternateLogin)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

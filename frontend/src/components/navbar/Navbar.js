@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { alternateLogin } from '../../actions/index';
 
 function Navbar(props) {
   const loginStatus = useSelector(state => state.isLoggedIn);
-  console.log(loginStatus);
   const dispatch = useDispatch();
-  // const loginStatus = true
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -21,7 +20,7 @@ function Navbar(props) {
               dispatch(alternateLogin());
             }}
           >
-            hello
+            hello + {loginStatus}
           </button>
         </div>
         <button
@@ -40,8 +39,11 @@ function Navbar(props) {
           id="navbarTogglerDemo01"
         >
           <div className="ml-auto">
-            {props.loggedInReducer ? (
-              ''
+            {loginStatus ? (
+                 <Link to="/login">
+                 {' '}
+                 <button className="btn btn-danger navbar-btn">Log Out</button>
+               </Link>
             ) : (
               <Link to="/login">
                 {' '}
@@ -59,17 +61,14 @@ function Navbar(props) {
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
+// const mapDispatchToProps = dispatch => {
+//   return {};
+// };
 
-const mapStateToProps = state => {
-  return {
-    loggedInReducer: state.isLoggedIn
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     loggedInReducer: state.loggedIn
+//   };
+// };
 
-export default connect(
-  mapStateToProps,
-  null
-)(Navbar);
+export default Navbar;
