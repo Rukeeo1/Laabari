@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
+import { alternateLogin } from '../../actions/index';
 
-function Navbar() {
-  const loginStatus = useSelector(state => state.loggedInReducer);
+function Navbar(props) {
+  const loginStatus = useSelector(state => state.isLoggedIn);
+  console.log(loginStatus);
+  const dispatch = useDispatch();
   // const loginStatus = true
   return (
     <>
@@ -12,6 +16,13 @@ function Navbar() {
           <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             Labaari
           </Link>
+          <button
+            onClick={() => {
+              dispatch(alternateLogin());
+            }}
+          >
+            hello
+          </button>
         </div>
         <button
           className="navbar-toggler"
@@ -29,7 +40,7 @@ function Navbar() {
           id="navbarTogglerDemo01"
         >
           <div className="ml-auto">
-            {loginStatus ? (
+            {props.loggedInReducer ? (
               ''
             ) : (
               <Link to="/login">
@@ -48,4 +59,17 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+const mapStateToProps = state => {
+  return {
+    loggedInReducer: state.isLoggedIn
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Navbar);

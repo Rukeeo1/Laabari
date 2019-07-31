@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
+//create the mongoose schema
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -35,6 +36,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
+//use the schema above to create a the user model
 const UserModel = mongoose.model('User', userSchema);
 
 //an extra validation handle by Joi...
