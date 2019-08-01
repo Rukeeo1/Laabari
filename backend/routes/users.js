@@ -19,25 +19,23 @@ router.post('/', async (req, res) => {
   const { error } = validateUser(req.body); //validation with joy
   console.log(error);
   if (error) return res.status(400).send(error.details[0].message);
-  try {
-    user = new UserModel({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    });
-    
-    user.save().then(res => {
-      console.log('hey i actually saved')
-      res.status(200).send(res)
-    }).catch(err => {
-      res.send(err.message)
-    })
 
-    //res.send(user); //returns the user after a sucessful save attempt....
-  } catch (error) {
-    console.log(error.message);
-    res.send(error.message);
-  }
+  user = new UserModel({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  });
+
+  user
+    .save()
+    .then(res => {
+      res.status(200).send(res);
+    })
+    .catch(err => {
+      res.send(err.message);
+    });
+
+  //res.send(user); //returns the user after a sucessful save attempt....
 });
 
 module.exports = router;
