@@ -6,7 +6,6 @@ function Card() {
       <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
-          //   src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
           src="https://img.yts.lt/assets/images/movies/london_rampage_2018/medium-cover.jpg"
           alt="Card"
           width="210px"

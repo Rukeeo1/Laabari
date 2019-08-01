@@ -32,12 +32,14 @@ class SignUp extends React.Component {
         mobile: this.state.mobile,
         password: this.state.password,
         plan: 'no plan yet',
-        id: Math.trunc(Date.now() + 223 - 45 + Math.random())
       };
 
+      console.log(userObject, 'this is the users object')
+     // http://localhost:3001/api/users
       axios
-        .post('http://localhost:3000/user', userObject)
+        .post('http://localhost:3001/api/users', userObject)
         .then(response => {
+            console.log('i came this far...')
           console.log(response);
         })
         .catch(error => {

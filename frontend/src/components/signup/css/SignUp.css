@@ -16,7 +16,7 @@
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0px 10px 50px #555;
-    background: #ffffff;
+    background: black;
   }
   
   form {
@@ -38,7 +38,6 @@
     padding: 10px 10px;
     border-radius: 5px;
     outline: none;
-    /* color: #999; */
     border: 1px solid #cfcfcf;
   }
   

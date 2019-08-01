@@ -97,7 +97,7 @@ class Login extends React.Component {
     if (loggedIn) {
       return <Redirect to="/videos-gallery" />;
     }
-    console.log(this.props.loginStatus, 'this');
+
     return (
       <div className="wrapper">
         {/* <NavBar /> */}
