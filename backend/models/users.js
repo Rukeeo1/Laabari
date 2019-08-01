@@ -48,9 +48,10 @@ const UserModel = mongoose.model('User', userSchema);
 //an extra validation handle by Joi...
 function validateUser(user) {
   const schema = {
-    name: Joi.string().min(3),
+    name: Joi.string().min(3).allow(''),
     email: Joi.string().email(),
-    mobile: Joi.string().regex(/^\d{4}-\d{3}-\d{4}$/),
+    // mobile: Joi.string().regex(/^\d{4}-\d{3}-\d{4}$/).allow(''),
+    mobile: Joi.string().regex(/^\d{4}\d{3}\d{4}$/).allow(''),
     isSubscribed: Joi.boolean(),
     password:Joi.string(),
     date: Joi.date()

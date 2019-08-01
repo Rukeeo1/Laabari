@@ -10,44 +10,33 @@ router.get('/', async (req, res) => {
 
 router.get('/:email', async (req, res) => {
   const user = await UserModel.findOne({ email: req.params.email });
-
   if (!user) return res.status(404).send("contact doesn't exist");
   return res.send(user);
 });
 
-// router.post('/', async(req,res) => {
-
-// })
 router.post('/', async (req, res) => {
-  console.log('hhhl');
-  //we have to validate that the req is valid
-  const { error } = validateUser(req.body);
+  console.log('ukajd;flkadjsaf;ldsk');
+  const { error } = validateUser(req.body); //validation with joy
+  console.log(error);
   if (error) return res.status(400).send(error.details[0].message);
   try {
-    //if valid...ensure that that user never exist in the database..
-    // let user = await User.findOne({ email: req.body.email });
-    //if the user exist then return an errro message
-    //if (user) return res.status(400).send('User alreaady exist...');
-
-    //if user doesn't exist, then create a new one...with the same variable
     user = new UserModel({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
     });
-
     //save user....
     try {
-      await user.save();
+      await user.save(); //saves the data to mongo
     } catch (error) {
-      res.send(error.message + ' arlready exists');
+      res.send(error.message); //returns an error if the user doesn't exists
     }
 
-    //once user has been save, return the user back to the client.
-    res.send(user);
+    res.send(user); //returns the user after a sucessful save attempt....
   } catch (error) {
     console.log(error.message);
     res.send(error.message);
   }
 });
+
 module.exports = router;
