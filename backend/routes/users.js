@@ -15,18 +15,18 @@ router.get('/:email', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log('ukajd;flkadjsaf;ldsk');
   const { error } = validateUser(req.body); //validation with joy
-  console.log(error);
-  if (error) return res.status(400).send(error.details[0].message);
+
+  if (error) return res.status(400).send(error.details[0].message); //returns an error if the validation fails
 
   user = new UserModel({
+    //the user object to be saved....
     name: req.body.name,
     email: req.body.email,
     password: req.body.password
   });
 
-  user
+  user //saves the object and sends the response back or returns an error, if something goes wrong...
     .save()
     .then(res => {
       res.status(200).send(res);
@@ -34,8 +34,51 @@ router.post('/', async (req, res) => {
     .catch(err => {
       res.send(err.message);
     });
-
-  //res.send(user); //returns the user after a sucessful save attempt....
 });
+
+router.put('/:id', async (req, res) => {
+  console.log('hello rukee ... i am here...');
+  UserModel.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    email: req.body.email,
+    isSubscribed: req.body.isSubscribed
+  })
+    .then(response => {
+      res.send(response);
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+});
+
+router.delete('/:id', async (req, res) => {
+  const user = await UserModel.findByIdAndRemove(req.params.id);
+  if (!user)
+    return res.status(400).send('the user with the given id doesnt exist');
+  res.send(user, 'has been deleted');
+});
+/*
+
+ try {
+    const genre = await Genre.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name
+      },
+      {
+        new: true
+      }
+    );
+    res.send(genre);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(404).send('the genre with the given id doesnt exist');
+  }
+
+*/
+
+//basically i could have a router that updates plan
+// i could have another one that updates users details....
+//then a router to delete....
 
 module.exports = router;
