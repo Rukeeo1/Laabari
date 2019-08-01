@@ -22,7 +22,7 @@ function Card() {
       <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
-          src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+          src="https://img.yts.lt/assets/images/movies/Dark_Angel_1990/medium-cover.jpg"
           alt="Card"
         />
         <div className="card-img-overlay">
@@ -78,7 +78,7 @@ function Card() {
       <div className="card card-deck" style={{ width: '210px', margin: '4px' }}>
         <img
           className="card-img-top"
-          src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+          src="https://img.yts.lt/assets/images/movies/Dark_Angel_1990/medium-cover.jpg"
           alt="Card image"
         />
         <div className="card-img-overlay">

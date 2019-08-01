@@ -7,16 +7,7 @@ import { alternateLogin } from '../../actions/index';
 import './css/Login.css';
 //import NavBar from './NavBar';
 
-/**
- what's my goal here...on sucessful login
- i want to be able to upate the state...
- so to do this right on sucessful log,
- i want to dispatch
-
- i was obviously just able to acess the global state
- now i need to dispatch actions to the global state...
- */
-// console.log(localStorage);
+ 
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
 class Login extends React.Component {

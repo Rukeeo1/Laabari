@@ -3,7 +3,8 @@
   flex-wrap: wrap;
   flex-direction: row;
   color: brown;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: space-between;
 }
 
 .card-deck{
