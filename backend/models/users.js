@@ -6,7 +6,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    // required: true,
     minlength: 5,
     maxlength: 50
   },
@@ -53,6 +53,7 @@ function validateUser(user) {
     // mobile: Joi.string().regex(/^\d{4}-\d{3}-\d{4}$/).allow(''),
     mobile: Joi.string().regex(/^\d{4}\d{3}\d{4}$/).allow(''),
     isSubscribed: Joi.boolean(),
+    plan: Joi.string(),
     password:Joi.string(),
     date: Joi.date()
   };

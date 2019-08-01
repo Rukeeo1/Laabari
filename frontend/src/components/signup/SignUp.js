@@ -31,15 +31,15 @@ class SignUp extends React.Component {
         email: this.state.email,
         mobile: this.state.mobile,
         password: this.state.password,
-        plan: 'no plan yet',
+        plan: 'no plan yet'
       };
 
-      console.log(userObject, 'this is the users object')
-     // http://localhost:3001/api/users
+      console.log(userObject, 'this is the users object');
+      // http://localhost:3001/api/users
       axios
         .post('http://localhost:3001/api/users', userObject)
         .then(response => {
-            console.log('i came this far...')
+          console.log('i came this far...');
           console.log(response);
         })
         .catch(error => {

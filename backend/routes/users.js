@@ -25,14 +25,15 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: req.body.password
     });
-    //save user....
-    try {
-      await user.save(); //saves the data to mongo
-    } catch (error) {
-      res.send(error.message); //returns an error if the user doesn't exists
-    }
+    
+    user.save().then(res => {
+      console.log('hey i actually saved')
+      res.status(200).send(res)
+    }).catch(err => {
+      res.send(err.message)
+    })
 
-    res.send(user); //returns the user after a sucessful save attempt....
+    //res.send(user); //returns the user after a sucessful save attempt....
   } catch (error) {
     console.log(error.message);
     res.send(error.message);
