@@ -1,0 +1,29 @@
+.sidebar {
+  height: 100vh;
+  background: #f3f5f8;
+}
+
+.sidebar ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.sidebar li,
+.nav-item {
+  font-size: 16px;
+  color: #000;
+  padding: 20px 0 0px 0px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.font-awesome {
+  margin-right: 10px;
+  color: #152e4c;
+  font-size: 16px;
+}
+
+.nav-tabs li {
+  border-bottom: 1px solid #dbdbdb;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}

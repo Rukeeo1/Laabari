@@ -5,6 +5,7 @@ import Homepage from './components/Homepage/Homepage';
 import Login from './components/login/Login';
 import SignUp from './components/signup/SignUp';
 import VideoDetails from './components/video-details/VideoDetails';
+import MainSection from './components/dashboard/MainSection';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/videos" component={VideoDetails} />
+          <Route path="/dashboard" component={MainSection}/>
         </Switch>
       </div>
     </Router>
