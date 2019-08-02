@@ -60,12 +60,10 @@ function VideoDetails() {
               </div>
             </div>
             <div
-              class="col-md-3 col-sm-12 pt-2 pb-2 mr-4" id="movie-related"
+              class="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
+              id="movie-related"
               style={{ backgroundColor: 'lavender', wordWrap: 'break-word' }}
             >
-              {/* .colaksdjf;klsdjfa;dsknvdvklanf;kdfjaksd;fajsdf;klas
-              djfakdsljfa;lkdfjdaf;klasdj
-              fakdsljfaaslkdn;knsdfjklaf;adksjfa;fjkd sfdsf */}
               <p>Similar Movies</p>
               <a
                 href="https://yts.lt/movie/an-angel-at-my-table-1990"
@@ -106,6 +104,65 @@ function VideoDetails() {
             </div>
           </div>
         </div>
+
+        <div id="screenshots" className="row">
+          <div class="screenshot">
+            <a
+              class="youtube cboxElement"
+              href="https://www.youtube.com/embed/QvHv-99VfcU?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3"
+              id="playTrailer"
+            >
+              <span class="btn-play-trailer" />
+            </a>
+            <a
+              class="screenshot-group imghov cboxElement"
+              href="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/large-screenshot1.jpg"
+            >
+              <img
+                src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-screenshot1.jpg"
+                alt="some picture"
+              />
+            </a>
+          </div>
+          <div class="screenshot">
+            <a
+              class="youtube cboxElement"
+              href="https://www.youtube.com/embed/QvHv-99VfcU?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3"
+              id="playTrailer"
+            >
+              <span class="btn-play-trailer" />
+            </a>
+            <a
+              class="screenshot-group imghov cboxElement"
+              href="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/large-screenshot1.jpg"
+            >
+              <img
+                src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-screenshot2.jpg"
+                alt="some picture"
+              />
+            </a>
+          </div>
+          <div class="screenshot">
+            <a
+              class="youtube cboxElement"
+              href="https://www.youtube.com/embed/QvHv-99VfcU?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3"
+              id="playTrailer"
+            >
+              <span class="btn-play-trailer" />
+            </a>
+            <a
+              class="screenshot-group imghov cboxElement"
+              href="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/large-screenshot1.jpg"
+            >
+              <img
+                src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-screenshot3.jpg"
+                alt="some picture"
+              />
+            </a>
+          </div>
+          
+        </div>
+        
       </div>
     </>
   );

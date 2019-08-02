@@ -70,3 +70,31 @@
     margin-right: 0 !important;
   }
 }
+/*
+
+#playerTrailer span{
+  /* background: url(../images/website/play-trailer.svg) no-repeat center center; 
+  position:absolute;
+  width: 33%;
+  height: 100%;
+
+}
+
+#screenshots{
+  margin-top: 50px;
+  text-align: center;
+  position: relative;
+  /* justify-content: space-evenly; 
+  align-self: center;
+}
+
+*/
+
+#screenshots{
+  margin-left:130px;
+  margin-top: 50px;
+}
+
+#screenshots img{
+   margin: 5px;
+}
