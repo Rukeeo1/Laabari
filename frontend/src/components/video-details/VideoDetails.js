@@ -60,12 +60,49 @@ function VideoDetails() {
               </div>
             </div>
             <div
-              class="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
+              class="col-md-3 col-sm-12 pt-2 pb-2 mr-4" id="movie-related"
               style={{ backgroundColor: 'lavender', wordWrap: 'break-word' }}
             >
-              .colaksdjf;klsdjfa;dsknvdvklanf;kdfjaksd;fajsdf;klas
+              {/* .colaksdjf;klsdjfa;dsknvdvklanf;kdfjaksd;fajsdf;klas
               djfakdsljfa;lkdfjdaf;klasdj
-              fakdsljfaaslkdn;knsdfjklaf;adksjfa;fjkd sfdsf
+              fakdsljfaaslkdn;knsdfjklaf;adksjfa;fjkd sfdsf */}
+              <p>Similar Movies</p>
+              <a
+                href="https://yts.lt/movie/an-angel-at-my-table-1990"
+                title="An Angel at My Table (1990)"
+              >
+                <img
+                  src="https://img.yts.lt/assets/images/movies/An_Angel_at_My_Table_1990/medium-cover.jpg"
+                  alt="An Angel at My Table (1990) download"
+                />
+              </a>
+              <a
+                href="https://yts.lt/movie/an-angel-at-my-table-1990"
+                title="An Angel at My Table (1990)"
+              >
+                <img
+                  src="https://img.yts.lt/assets/images/movies/Dark_Angel_1990/medium-cover.jpg"
+                  alt="An Angel at My Table (1990) download"
+                />
+              </a>
+              <a
+                href="https://yts.lt/movie/an-angel-at-my-table-1990"
+                title="An Angel at My Table (1990)"
+              >
+                <img
+                  src="https://img.yts.lt/assets/images/movies/the_face_of_an_angel_2014/medium-cover.jpg"
+                  alt="An Angel at My Table (1990) download"
+                />
+              </a>
+              <a
+                href="https://yts.lt/movie/an-angel-at-my-table-1990"
+                title="An Angel at My Table (1990)"
+              >
+                <img
+                  src="https://img.yts.lt/assets/images/movies/angel_town_1990/medium-cover.jpg"
+                  alt="An Angel at My Table (1990) download"
+                />
+              </a>
             </div>
           </div>
         </div>
