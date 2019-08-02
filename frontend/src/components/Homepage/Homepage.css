@@ -7,6 +7,8 @@
   justify-content: space-between;
 }
 
+/* Arimo,Arial,Helvetica,lucida grande,sans-serif */
+
 .card-deck{
   /* border: 5px solid white; */
   text-align: center;
@@ -17,10 +19,12 @@
   font-weight: bold;
   text-align: center;
    border: 5px solid white; 
+   /* display: none; */
 }
 
 .card-img-overlay:hover{
   background-color: rgba(50, 115, 220, 0.3);
+  display: initial;
 border: 5px solid #efbb35; 
 
 }
@@ -28,4 +32,14 @@ border: 5px solid #efbb35;
 .card-title{
   margin-top: 80px;
 }
+
+/* .card-title, .card-text, .btn-primary {
+  display: none;
+}
+
+
+.card-title, .card-text, .btn-primary:hover {
+  /* display: unset; */
+/* }  */
+
 
