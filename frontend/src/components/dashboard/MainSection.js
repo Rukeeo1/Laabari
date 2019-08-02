@@ -1,11 +1,13 @@
 import React from 'react';
 import './css/Dashboard.css';
+import Sidebar from './SideNav'
 
 function MainSection() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-3 sidebar">
+        <Sidebar />
+        {/* <div className="col-sm-3 sidebar">
           <div>
             <ul className="nav-tabs">
               <li className="nav-item">
@@ -35,7 +37,7 @@ function MainSection() {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
         <div className="col-sm-9" style={{ backgroundColor: 'white' }}>
           <div className="tab-content">
             <div className="tab-pane container active" id="home">
