@@ -5,11 +5,6 @@ function VideoDetails() {
   return (
     <>
       <div class="container-fluid">
-        {/* <h1>Three equal width columns</h1>
-        <p>
-          Note: Try to add a new div with class="col" inside the row class -
-          this will create four equal-width columns.
-        </p> */}
         <div class="container">
           <div class="row">
             <div class="col-md-3 col-sm-12 pt-2 pb-2 mr-4">

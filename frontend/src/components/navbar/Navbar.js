@@ -10,7 +10,7 @@ function Navbar(props) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
+      <nav className="navbar navbar-expand-lg navbar-light bg-transparent personal-styles">
         <div className="navbar-header">
           <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             Labaari
@@ -60,15 +60,5 @@ function Navbar(props) {
     </>
   );
 }
-
-// const mapDispatchToProps = dispatch => {
-//   return {};
-// };
-
-// const mapStateToProps = state => {
-//   return {
-//     loggedInReducer: state.loggedIn
-//   };
-// };
 
 export default Navbar;

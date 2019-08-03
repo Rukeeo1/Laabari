@@ -10,7 +10,6 @@ function MainSection() {
     <div className="container">
       <div className="row">
         <Sidebar />
-
         <div className="col-sm-9" style={{ backgroundColor: 'white' }}>
           <Switch>
             <Route exact path="/dashboard/users" component={Users} />
