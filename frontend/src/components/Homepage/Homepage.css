@@ -9,35 +9,37 @@
 
 /* Arimo,Arial,Helvetica,lucida grande,sans-serif */
 
-.card-deck{
+.card-deck {
   /* border: 5px solid white; */
   text-align: center;
- margin: 20px !important;
+  margin: 20px !important;
 }
 
-.card-img-overlay{
-  color:white;
+.card-img-overlay {
+  color: #fff;
   font-weight: bold;
   text-align: center;
-   border: 5px solid white; 
-   opacity: 0;
-   font-size: 25px;
-   /* display: none; */
+  border: 5px solid white;
+  opacity: 0;
+  font-size: 25px;
+  /* display: none; */
 }
 
-.card-img-overlay:hover{
-  opacity: 1;
-  border: 5px solid #6ac045; 
+.card-img-overlay .btn-primary {
+  background: #6ac045 !important;
+  font-weight: 700;
+  border: #6ac045;
 }
 
-.card-img-overlay:hover{
+.card-img-overlay:hover {
   background-color: rgba(50, 115, 220, 0.3);
   display: initial;
-/* border: 5px solid #efbb35;  */
-
+  opacity: 1;
+  border: 5px solid #6ac045;
+  /* border: 5px solid #efbb35;  */
 }
 
-.card-title{
+.card-title {
   margin-top: 80px;
 }
 
@@ -49,5 +51,3 @@
 .card-title, .card-text, .btn-primary:hover {
   /* display: unset; */
 /* }  */
-
-

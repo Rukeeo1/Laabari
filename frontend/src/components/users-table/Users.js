@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+//do an axios request to get all users...
+//when it shows up set the state this niggar is going to loop through
+//map through that array and append the data to the table....
+// how does your search come in, i am not sure....
 
 function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    //going to call a get users function here?
+    getUsers();
+  }, []);
+
+  function getUsers() {
+    axios
+      .get('http://localhost:3001/api/users')
+      .then(response => {
+        console.log(response.data, 'this is the data i am looking for');
+        setUsers(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       <div>
@@ -90,6 +114,7 @@ function Users() {
             Launch Modal Register Form
           </a>
         </div>
+ 
       </div>
       <table class="table table-striped">
         <thead>
@@ -103,43 +128,28 @@ function Users() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <i class="fas fa-paint-brush-alt" />
-            </td>
-            <td>
-              <i class="far fa-trash-alt" data-toggle="modal"
-            data-target="#modalRegisterForm" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>
-              <i class="fas fa-paint-brush-alt" />
-            </td>
-            <td>
-              <i class="far fa-trash-alt" />
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>
-              <i class="fas fa-paint-brush-alt" />
-            </td>
-            <td>
-              <i class="far fa-trash-alt" />
-            </td>
-          </tr>
+          {users.map((user, index) => {
+            return (
+              <>
+                <tr>
+                  <th scope="row">{index + 1}</th>
+                  <td>{user.email}</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>
+                    <i class="fas fa-paint-brush-alt" />
+                  </td>
+                  <td>
+                    <i
+                      class="far fa-trash-alt"
+                      data-toggle="modal"
+                      data-target="#modalRegisterForm"
+                    />
+                  </td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
       </table>
     </>

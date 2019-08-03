@@ -14,7 +14,7 @@ function Card() {
         <div className="card-img-overlay">
           <h4 className="card-title">John Doe</h4>
           <p className="card-text">about the movie i want to tell </p>
-          <a href="#" className="btn btn-primary">
+          <a className="btn btn-primary">
             See Profile
           </a>
         </div>

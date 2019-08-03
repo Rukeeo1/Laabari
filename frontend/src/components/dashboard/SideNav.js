@@ -6,7 +6,7 @@ function SideBar() {
     <>
       <div className="col-sm-3 sidebar">
         <div>
-          <ul className="nav-tabs">
+          <ul className="nav-tabs li-style">
             <li className="nav-item">
               <Link  to="/dashboard/users" className="nav-link" >
                 <i className="fas fa-user-secret font-awesome" />

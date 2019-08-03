@@ -40,10 +40,10 @@ function Navbar(props) {
         >
           <div className="ml-auto">
             {loginStatus ? (
-                 <Link to="/login">
-                 {' '}
-                 <button className="btn btn-danger navbar-btn">Log Out</button>
-               </Link>
+              <Link to="/login">
+                {' '}
+                <button className="btn btn-danger navbar-btn">Log Out</button>
+              </Link>
             ) : (
               <Link to="/login">
                 {' '}
