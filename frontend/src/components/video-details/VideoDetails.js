@@ -120,7 +120,7 @@ function VideoDetails() {
             >
               <img
                 src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-screenshot1.jpg"
-                alt="some picture"
+                alt="some"
               />
             </a>
           </div>
@@ -138,7 +138,7 @@ function VideoDetails() {
             >
               <img
                 src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-screenshot2.jpg"
-                alt="some picture"
+                alt="some"
               />
             </a>
           </div>
@@ -156,7 +156,7 @@ function VideoDetails() {
             >
               <img
                 src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-screenshot3.jpg"
-                alt="some picture"
+                alt="some"
               />
             </a>
           </div>

@@ -45,31 +45,61 @@
   margin-top: 8px;
 }
 
-#movie-related p{
+#movie-related p {
   font-weight: 700;
   font-size: 16px;
-  text-shadow: 0 2px 2px rgba(0, 0,0, 0.4);
-  color:white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  color: white;
   margin-left: 12px;
   margin-bottom: 5px;
 }
-#movie-related img{
-  width:92px;
-  height:138px;
+#movie-related img {
+  width: 92px;
+  height: 138px;
   border: solid 4px white;
   border-radius: 2px;
   margin: 0 0 15px 15px;
-  }
-  
-  #movie-related img:hover{
-  border:solid 4px #6ac045;
-  }
+}
+
+#movie-related img:hover {
+  border: solid 4px #6ac045;
+}
 
 @media only screen and (min-width: 160px) and (max-width: 700px) {
   .mr-4 {
     margin-right: 0 !important;
   }
 }
+
+@media (min-width: 992px) {
+  .movie-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    line-height: 42px;
+  }
+  .movie-info h2 {
+    line-height: 24px;
+    font-size: 1.25em;
+  }
+}
+
+.movie-info h1 {
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+
+.movie-info h2{
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  margin: 0;
+}
+
 /*
 
 #playerTrailer span{
@@ -90,11 +120,11 @@
 
 */
 
-#screenshots{
-  margin-left:130px;
+#screenshots {
+  margin-left: 130px;
   margin-top: 50px;
 }
 
-#screenshots img{
-   margin: 5px;
+#screenshots img {
+  margin: 5px;
 }

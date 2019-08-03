@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function SideBar() {
   return (
@@ -37,4 +38,4 @@ function SideBar() {
   );
 }
 
-export default SideBar
+export default SideBar;
