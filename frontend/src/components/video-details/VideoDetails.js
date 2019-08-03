@@ -12,10 +12,7 @@ function VideoDetails() {
         </p> */}
         <div class="container">
           <div class="row">
-            <div
-              class="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
-
-            >
+            <div class="col-md-3 col-sm-12 pt-2 pb-2 mr-4">
               <img
                 src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-cover.jpg"
                 class="imageone img-responsive"
@@ -26,10 +23,7 @@ function VideoDetails() {
                 Play
               </button>
             </div>
-            <div
-              class="col-md-5 col-sm-12 pt-2 pb-2 mr-4"
-   
-            >
+            <div class="col-md-5 col-sm-12 pt-2 pb-2 mr-4">
               <div class="movie-info">
                 <div>
                   <h1>Alita: Battle Angel</h1>
@@ -37,10 +31,18 @@ function VideoDetails() {
                   <h2>Action / Adventure / Sci-fi / Thriller</h2>
                   <p class="hidden-xs hidden-sm">
                     <em class="pull-left">Available in:</em>
-                    <button class="my-primary video-quality-btn">3D.BluRay</button>
-                    <button class="my-primary video-quality-btn">720p.BluRay</button>
-                    <button class="my-primary video-quality-btn">1080p.BluRay</button>
-                    <button class="my-primary video-quality-btn">720p.WEB</button>
+                    <button class="my-primary video-quality-btn">
+                      3D.BluRay
+                    </button>
+                    <button class="my-primary video-quality-btn">
+                      720p.BluRay
+                    </button>
+                    <button class="my-primary video-quality-btn">
+                      1080p.BluRay
+                    </button>
+                    <button class="my-primary video-quality-btn">
+                      720p.WEB
+                    </button>
                   </p>
                 </div>
                 <div className="synopsis-body">
