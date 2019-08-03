@@ -14,7 +14,7 @@ function VideoDetails() {
           <div class="row">
             <div
               class="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
-              style={{ backgroundColor: 'lavender' }}
+
             >
               <img
                 src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-cover.jpg"
@@ -28,7 +28,7 @@ function VideoDetails() {
             </div>
             <div
               class="col-md-5 col-sm-12 pt-2 pb-2 mr-4"
-              style={{ backgroundColor: 'orange' }}
+   
             >
               <div class="movie-info">
                 <div>
@@ -62,7 +62,7 @@ function VideoDetails() {
             <div
               class="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
               id="movie-related"
-              style={{ backgroundColor: 'lavender', wordWrap: 'break-word' }}
+              style={{ wordWrap: 'break-word' }}
             >
               <p>Similar Movies</p>
               <a
