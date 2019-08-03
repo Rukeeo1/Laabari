@@ -20,13 +20,20 @@
   font-weight: bold;
   text-align: center;
    border: 5px solid white; 
+   opacity: 0;
+   font-size: 25px;
    /* display: none; */
+}
+
+.card-img-overlay:hover{
+  opacity: 1;
+  border: 5px solid #6ac045; 
 }
 
 .card-img-overlay:hover{
   background-color: rgba(50, 115, 220, 0.3);
   display: initial;
-border: 5px solid #efbb35; 
+/* border: 5px solid #efbb35;  */
 
 }
 

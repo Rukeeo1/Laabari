@@ -40,7 +40,7 @@ function Card() {
           alt="Card"
         />
         <div className="card-img-overlay">
-          <h4 className="card-title">John Doe</h4>
+          <h1 className="card-title">Avengers</h1>
           <p className="card-text">Some example text.</p>
           <a href="#" className="btn btn-primary">
             See Profile
