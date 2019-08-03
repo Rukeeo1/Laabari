@@ -12,6 +12,7 @@
 .card-deck{
   /* border: 5px solid white; */
   text-align: center;
+ margin: 20px !important;
 }
 
 .card-img-overlay{
