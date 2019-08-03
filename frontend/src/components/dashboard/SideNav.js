@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function SideBar() {
   return (
@@ -8,16 +8,16 @@ function SideBar() {
         <div>
           <ul className="nav-tabs">
             <li className="nav-item">
-              <NavLink  to="/dashboard/users" className="nav-link" >
+              <Link  to="/dashboard/users" className="nav-link" >
                 <i className="fas fa-user-secret font-awesome" />
                 Users
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink to="/dashboard/videos" className="nav-link" href="menu1">
+              <Link to="/dashboard/videos" className="nav-link" href="menu1">
                 <i className="fas fa-file-video font-awesome" />
                 Videos
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" data-toggle="tab">

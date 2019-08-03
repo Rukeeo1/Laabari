@@ -100,6 +100,20 @@
   margin: 0;
 }
 
+.movie-info p{
+  margin-top:30px;
+}
+
+.synopsis-body p{
+  color:#919191;
+  text-align: left;
+  font-family: Arimo,Arial,Helvetica,lucida grande,sans-serif;
+  margin-top:10px;
+}
+
+.video-quality-btn{
+  background: rgba(27,27,35,.4);
+}
 /*
 
 #playerTrailer span{

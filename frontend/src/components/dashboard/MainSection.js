@@ -1,13 +1,15 @@
 import React from 'react';
 import './css/Dashboard.css';
 import Users from '../users-table/Users'
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import VideoList from '../video-lists/VideoList'
 import Sidebar from './SideNav'
 
 function MainSection() {
   return (
     <div className="container">
       <div className="row">
+        
         <Sidebar />
         {/* <div className="col-sm-3 sidebar">
           <div>
@@ -62,7 +64,9 @@ function MainSection() {
               </div>
             </div>
           </div> */}
-          <Route to="/dashboard/users" component={Users}/>
+          <Route exact to="/users" component={Users}/>
+          <Route exact to="/videos" component={VideoList} />
+
         </div>
       </div>
     </div>

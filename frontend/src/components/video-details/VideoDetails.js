@@ -34,16 +34,16 @@ function VideoDetails() {
                 <div>
                   <h1>Alita: Battle Angel</h1>
                   <h2>2019</h2>
-                  <h3>Action / Adventure / Sci-fi / Thriller</h3>
+                  <h2>Action / Adventure / Sci-fi / Thriller</h2>
                   <p class="hidden-xs hidden-sm">
                     <em class="pull-left">Available in:</em>
-                    <button class="my-primary">3D.BluRay</button>
-                    <button class="my-primary">720p.BluRay</button>
-                    <button class="my-primary">1080p.BluRay</button>
-                    <button class="my-primary">720p.WEB</button>
+                    <button class="my-primary video-quality-btn">3D.BluRay</button>
+                    <button class="my-primary video-quality-btn">720p.BluRay</button>
+                    <button class="my-primary video-quality-btn">1080p.BluRay</button>
+                    <button class="my-primary video-quality-btn">720p.WEB</button>
                   </p>
                 </div>
-                <div>
+                <div className="synopsis-body">
                   <h2>Synopsis</h2>
                   <p>
                     Alita is a creation from an age of despair. Found by the
@@ -160,9 +160,7 @@ function VideoDetails() {
               />
             </a>
           </div>
-          
         </div>
-        
       </div>
     </>
   );
