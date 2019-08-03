@@ -1,5 +1,7 @@
 import React from 'react';
 import './css/Dashboard.css';
+import Users from '../users-table/Users'
+import { Route, Link } from 'react-router-dom'
 import Sidebar from './SideNav'
 
 function MainSection() {
@@ -39,8 +41,8 @@ function MainSection() {
           </div>
         </div> */}
         <div className="col-sm-9" style={{ backgroundColor: 'white' }}>
-          <div className="tab-content">
-            <div className="tab-pane container active" id="home">
+          {/* <div className="tab-content"> */}
+            {/* <div className="tab-pane container active" id="home">
               <div
                 className="card card-deck"
                 style={{ width: '210px', margin: '4px' }}
@@ -59,7 +61,8 @@ function MainSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <Route to="/dashboard/users" component={Users}/>
         </div>
       </div>
     </div>

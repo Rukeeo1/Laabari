@@ -8,16 +8,16 @@ function SideBar() {
         <div>
           <ul className="nav-tabs">
             <li className="nav-item">
-              <a className="nav-link" data-toggle="tab" href="#home">
+              <NavLink  to="/dashboard/users" className="nav-link" >
                 <i className="fas fa-user-secret font-awesome" />
                 Users
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" data-toggle="tab" href="menu1">
+              <NavLink to="/dashboard/videos" className="nav-link" href="menu1">
                 <i className="fas fa-file-video font-awesome" />
                 Videos
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
               <a className="nav-link" data-toggle="tab">
