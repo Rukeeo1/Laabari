@@ -4,6 +4,7 @@ const router = express.Router();
 const { validateUser, UserModel } = require('../models/users');
 
 router.get('/', async (req, res) => {
+  console.log('hehlllajsf;djk')
   const users = await UserModel.find();
   res.send(users);
 });

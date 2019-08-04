@@ -9,15 +9,16 @@ function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    console.log('we');
+    deleteUser ()
     //going to call a get users function here?
     getUsers();
   }, []);
 
   function getUsers() {
     axios
-      .get('http://localhost:3001/api/users')
+      .get(`http://localhost:3001/api/users`)
       .then(response => {
-        console.log(response.data, 'this is the data i am looking for');
         setUsers(response.data);
       })
       .catch(error => {
@@ -25,98 +26,110 @@ function Users() {
       });
   }
 
+  const deleteUser = id => {
+    const usersAfterDelete = users.filter(user => user.id !== id);
+    axios
+      .get(`http://localhost3001/api/movies`)
+      .then(response => {
+        console.log(response);
+        // setUsers(usersAfterDelete);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div>
         <div
-          class="modal fade"
+          className="modal fade"
           id="modalRegisterForm"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="myModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header text-center">
+                <h4 className="modal-title w-100 font-weight-bold">Sign up</h4>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body mx-3">
-                <div class="md-form mb-5">
-                  <i class="fas fa-user prefix grey-text" />
+              <div className="modal-body mx-3">
+                <div className="md-form mb-5">
+                  <i className="fas fa-user prefix grey-text" />
                   <input
                     type="text"
                     id="orangeForm-name"
-                    class="form-control validate"
+                    className="form-control validate"
                   />
                   <label
                     data-error="wrong"
                     data-success="right"
-                    for="orangeForm-name"
+                    htmlFor="orangeForm-name"
                   >
                     Your name
                   </label>
                 </div>
-                <div class="md-form mb-5">
-                  <i class="fas fa-envelope prefix grey-text" />
+                <div className="md-form mb-5">
+                  <i className="fas fa-envelope prefix grey-text" />
                   <input
                     type="email"
                     id="orangeForm-email"
-                    class="form-control validate"
+                    className="form-control validate"
                   />
                   <label
                     data-error="wrong"
                     data-success="right"
-                    for="orangeForm-email"
+                    htmlFor="orangeForm-email"
                   >
                     Your email
                   </label>
                 </div>
 
-                <div class="md-form mb-4">
-                  <i class="fas fa-lock prefix grey-text" />
+                <div className="md-form mb-4">
+                  <i className="fas fa-lock prefix grey-text" />
                   <input
                     type="password"
                     id="orangeForm-pass"
-                    class="form-control validate"
+                    className="form-control validate"
                   />
                   <label
                     data-error="wrong"
                     data-success="right"
-                    for="orangeForm-pass"
+                    htmlFor="orangeForm-pass"
                   >
                     Your password
                   </label>
                 </div>
               </div>
-              <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-deep-orange">Sign up</button>
+              <div className="modal-footer d-flex justify-content-center">
+                <button className="btn btn-deep-orange">Sign up</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="text-center">
+        <div className="text-center">
           <a
             href=""
-            class="btn btn-default btn-rounded mb-4"
+            className="btn btn-default btn-rounded mb-4"
             data-toggle="modal"
             data-target="#modalRegisterForm"
           >
             Launch Modal Register Form
           </a>
         </div>
- 
       </div>
-      <table class="table table-striped">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -137,13 +150,14 @@ function Users() {
                   <td>Otto</td>
                   <td>@mdo</td>
                   <td>
-                    <i class="fas fa-paint-brush-alt" />
+                    <i className="fas fa-paint-brush-alt" />
                   </td>
                   <td>
                     <i
-                      class="far fa-trash-alt"
+                      className="far fa-trash-alt"
                       data-toggle="modal"
                       data-target="#modalRegisterForm"
+                      onClick={() => deleteUser(user.id)}
                     />
                   </td>
                 </tr>
