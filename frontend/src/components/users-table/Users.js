@@ -24,7 +24,7 @@ function Users() {
   }
 
   const deleteUser = id => {
-    alert('hhhhhh');
+    alert(id);
     const usersAfterDelete = users.filter(user => user.id !== id);
     axios
       .get(`http://localhost3001/api/movies`)
@@ -153,10 +153,11 @@ function Users() {
                       data-target="#modalRegisterForm"
                     />
                   </td>
-                  <td>
+                  <td onClick={() => alert('hellow')}>
                     <i
                       className="far fa-trash-alt"
-                      onClick={() => deleteUser(user.id)}
+                      
+                     // onClick={() => deleteUser(user.id)}
                     />
                   </td>
                 </tr>
