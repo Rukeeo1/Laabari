@@ -16,8 +16,10 @@ router.get('/:email', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  console.log('hello checking');
   const { error } = validateUser(req.body); //validation with joy
-
+ console.log(error)
+ console.log('hello agaain')
   if (error) return res.status(400).send(error.details[0].message); //returns an error if the validation fails
 
   user = new UserModel({
@@ -38,7 +40,6 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  console.log('hello rukee ... i am here...');
   UserModel.findByIdAndUpdate(req.params.id, {
     name: req.body.name,
     email: req.body.email,
