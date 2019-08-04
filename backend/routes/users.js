@@ -4,7 +4,6 @@ const router = express.Router();
 const { validateUser, UserModel } = require('../models/users');
 
 router.get('/', async (req, res) => {
-  console.log('hehlllajsf;djk');
   const users = await UserModel.find();
   res.send(users);
 });
@@ -12,14 +11,15 @@ router.get('/', async (req, res) => {
 router.get('/:email', async (req, res) => {
   const user = await UserModel.findOne({ email: req.params.email });
   if (!user) return res.status(404).send("contact doesn't exist");
+
   return res.send(user);
 });
 
 router.post('/', async (req, res) => {
   console.log('hello checking');
   const { error } = validateUser(req.body); //validation with joy
- console.log(error)
- console.log('hello agaain')
+  console.log(error);
+  console.log('hello agaain');
   if (error) return res.status(400).send(error.details[0].message); //returns an error if the validation fails
 
   user = new UserModel({
@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  console.log('hello i was here....');
+
   try {
     const user = await UserModel.findByIdAndRemove(req.params.id);
     if (!user)
@@ -64,6 +64,10 @@ router.delete('/:id', async (req, res) => {
     console.log(error.message);
   }
 });
+
+router.post('/login', async(req,res) => {
+ 
+})
 /*
 
  try {
