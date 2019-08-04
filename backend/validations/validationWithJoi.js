@@ -6,3 +6,5 @@ function validateLoginEmail(loginEmail) {
   const schema = { email: Joi.string().email()};
   return Joi.validate(schema,loginEmail)
 }
+
+modules.exports = validateLoginEmail
