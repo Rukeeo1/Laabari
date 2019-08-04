@@ -4,7 +4,7 @@ const router = express.Router();
 const { validateUser, UserModel } = require('../models/users');
 
 router.get('/', async (req, res) => {
-  console.log('hehlllajsf;djk')
+  console.log('hehlllajsf;djk');
   const users = await UserModel.find();
   res.send(users);
 });
@@ -53,10 +53,15 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  const user = await UserModel.findByIdAndRemove(req.params.id);
-  if (!user)
-    return res.status(400).send('the user with the given id doesnt exist');
-  res.send(user, 'has been deleted');
+  console.log('hello i was here....');
+  try {
+    const user = await UserModel.findByIdAndRemove(req.params.id);
+    if (!user)
+      return res.status(400).send('the user with the given id doesnt exist');
+    res.send(user);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 /*
 

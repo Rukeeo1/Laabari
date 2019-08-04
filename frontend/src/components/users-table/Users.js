@@ -25,12 +25,12 @@ function Users() {
 
   const deleteUser = id => {
     alert(id);
-    const usersAfterDelete = users.filter(user => user.id !== id);
+    const usersAfterDelete = users.filter(user => user._id !== id);
     axios
-      .get(`http://localhost3001/api/movies`)
+      .delete(`http://localhost:3001/api/users/${id}`)
       .then(response => {
         console.log(response);
-        // setUsers(usersAfterDelete);
+        setUsers(usersAfterDelete);
       })
       .catch(error => {
         console.log(error);
@@ -141,26 +141,25 @@ function Users() {
         <tbody>
           {users.map((user, index) => {
             return (
-                <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{user.email}</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>
-                    <i
-                      className="fas fa-paint-brush-alt"
-                      data-toggle="modal"
-                      data-target="#modalRegisterForm"
-                    />
-                  </td>
-                  <td onClick={() => alert('hellow')}>
-                    <i
-                      className="far fa-trash-alt"
-                      
-                     // onClick={() => deleteUser(user.id)}
-                    />
-                  </td>
-                </tr>
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{user.email}</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>
+                  <i
+                    className="fas fa-paint-brush-alt"
+                    data-toggle="modal"
+                    data-target="#modalRegisterForm"
+                  />
+                </td>
+                <td onClick={() => deleteUser(user._id)}>
+                  <i
+                    className="far fa-trash-alt"
+                    // onClick={() => deleteUser(user.id)}
+                  />
+                </td>
+              </tr>
             );
           })}
         </tbody>
