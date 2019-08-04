@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-//do an axios request to get all users...
-//when it shows up set the state this niggar is going to loop through
-//map through that array and append the data to the table....
-// how does your search come in, i am not sure....
+//import { getUsers } from './helper/axios-requests';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -127,43 +124,46 @@ function Users() {
           </a>
         </div>
       </div>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Subscription(paid)</th>
-            <th scope="col">Actions</th>
-            <th scope="col" />
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{user.email}</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                  <i
-                    className="fas fa-paint-brush-alt"
-                    data-toggle="modal"
-                    data-target="#modalRegisterForm"
-                  />
-                </td>
-                <td onClick={() => deleteUser(user._id)}>
-                  <i
-                    className="far fa-trash-alt"
-                    // onClick={() => deleteUser(user.id)}
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="table-responsive">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Email</th>
+              {/* <th scope="col">Phone</th> */}
+              <th scope="col">Plan</th>
+              <th scope="col">Subscription(paid)</th>
+              <th scope="col">Actions</th>
+              <th scope="col" />
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{user.email}</td>
+                  {/* <td>{user.phone}</td> */}
+                  <td>{user.date}</td>
+                  <td>
+                    <i
+                      className="fas fa-paint-brush-alt"
+                      data-toggle="modal"
+                      data-target="#modalRegisterForm"
+                    />
+                  </td>
+                  <td onClick={() => deleteUser(user._id)}>
+                    <i
+                      className="far fa-trash-alt"
+                      // onClick={() => deleteUser(user.id)}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
