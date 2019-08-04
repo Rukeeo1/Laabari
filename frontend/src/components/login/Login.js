@@ -31,7 +31,7 @@ class Login extends React.Component {
 
     if (formValid(this.state)) {
       const userEmail = this.state.email;
-      const userPassword = this.state.password;
+      // const userPassword = this.state.password;
 
       axios
         .get(`http://localhost:3001/api/users/` + userEmail)

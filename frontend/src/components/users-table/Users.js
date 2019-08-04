@@ -9,9 +9,6 @@ function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    console.log('we');
-    deleteUser ()
-    //going to call a get users function here?
     getUsers();
   }, []);
 
@@ -27,6 +24,7 @@ function Users() {
   }
 
   const deleteUser = id => {
+    alert('hhhhhh');
     const usersAfterDelete = users.filter(user => user.id !== id);
     axios
       .get(`http://localhost3001/api/movies`)
@@ -143,25 +141,25 @@ function Users() {
         <tbody>
           {users.map((user, index) => {
             return (
-              <>
-                <tr>
+                <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>{user.email}</td>
                   <td>Otto</td>
                   <td>@mdo</td>
                   <td>
-                    <i className="fas fa-paint-brush-alt" />
+                    <i
+                      className="fas fa-paint-brush-alt"
+                      data-toggle="modal"
+                      data-target="#modalRegisterForm"
+                    />
                   </td>
                   <td>
                     <i
                       className="far fa-trash-alt"
-                      data-toggle="modal"
-                      data-target="#modalRegisterForm"
                       onClick={() => deleteUser(user.id)}
                     />
                   </td>
                 </tr>
-              </>
             );
           })}
         </tbody>

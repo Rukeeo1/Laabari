@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Dashboard.css';
 import Users from '../users-table/Users';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 import VideoList from '../video-lists/VideoList';
 import Sidebar from './SideNav';
 
