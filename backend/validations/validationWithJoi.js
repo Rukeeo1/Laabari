@@ -1,10 +1,14 @@
 const Joi = require('joi');
 
-console.log(Joi, 'rukee');
-
 function validateLoginEmail(loginEmail) {
-  const schema = { email: Joi.string().email()};
-  return Joi.validate(schema,loginEmail)
+  console.log('hello rukee');
+  const schema = {
+    email: Joi.string().email(),
+    password: Joi.string()
+      .min(3)
+      .required()
+  };
+  return Joi.validate(schema, loginEmail);
 }
 
-modules.exports = validateLoginEmail
+module.exports = validateLoginEmail;

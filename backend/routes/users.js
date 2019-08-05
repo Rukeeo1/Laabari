@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 //bring in the model to this place...
 const { validateUser, UserModel } = require('../models/users');
+const validateLoginEmail = require('../validations/validationWithJoi');
 
 router.get('/', async (req, res) => {
   const users = await UserModel.find();
@@ -29,14 +30,20 @@ router.post('/', async (req, res) => {
     password: req.body.password
   });
 
-  user //saves the object and sends the response back or returns an error, if something goes wrong...
-    .save()
-    .then(res => {
-      res.status(200).send(res);
-    })
-    .catch(err => {
-      res.send(err.message);
-    });
+  // user //saves the object and sends the response back or returns an error, if something goes wrong...
+  //   .save()
+  //   .then(res => {
+  //     res.send(res);
+  //   })
+  //   .catch(err => {
+  //     res.send(err.message);
+  //   });
+  try {
+    const savedUser = await user.save()
+    res.send(savedUser);
+  } catch (error) {
+    console.log(error.message)
+  }
 });
 
 router.put('/:id', async (req, res) => {
@@ -54,7 +61,6 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-
   try {
     const user = await UserModel.findByIdAndRemove(req.params.id);
     if (!user)
@@ -65,9 +71,26 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.post('/login', async(req,res) => {
- 
-})
+router.post('/login', async (req, res) => {
+  // console.log(req.body)
+
+  // // const { error } = validateLoginEmail(req.body);
+  // console.log(error,'ooo');
+  // console.log(error)
+
+  // if (error) return res.status(400).send(error.details[0].message);
+  console.log('i am just here to see my son')
+  const user = await UserModel.findOne({ email: req.body.email });
+  console.log(user)
+  if (!user) return res.status(400).send('Email Not Found!!!');
+  console.log(req.body.email);
+
+  const password = user.password === req.body.password ? true : false;
+  console.log(password);
+  if (!password) return res.status(400).send('Invalid password');
+
+  res.send({name: user.name, id : user._id, date: user.date})
+});
 /*
 
  try {
