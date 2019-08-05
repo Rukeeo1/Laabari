@@ -7,7 +7,6 @@ import { alternateLogin } from '../../actions/index';
 import './css/Login.css';
 //import NavBar from './NavBar';
 
- 
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
 class Login extends React.Component {
@@ -30,31 +29,56 @@ class Login extends React.Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      const userEmail = this.state.email;
-      // const userPassword = this.state.password;
+      const userEmail = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      console.log(userEmail, 'hello oo');
 
       axios
-        .get(`http://localhost:3001/api/users/` + userEmail)
+        .post('http://localhost:3001/api/users/login', userEmail)
         .then(response => {
-          if (response.data.length === 0) {
-            this.setState({
-              formErrors: {
-                email: 'please ensure email is correct',
-                password: 'ensure your password is correct'
-              }
-            });
-
-            return; //this return breaks the function if there are form errors....
-          }
-          //you can do a further password check here which i shall skip...
+          console.log(response);
           this.setState({ redirect: true });
-          this.props.onLogin(); //this is tobe called on login sucess
-          const user = response.data[0];
-          localStorage.setItem('user', JSON.stringify(user)); //store the item in local storage...
+          this.props.onLogin();
         })
-        .catch(error => {
-          console.log(error);
+        .catch(err => {
+          console.log(err.message);
+          //put a logic to say either user name or password is incorrect...
+          this.setState({
+            formErrors: {
+              email: 'please ensure email is correct',
+              password: 'ensure your password is correct'
+            }
+          });
         });
+
+      //     axios
+      //       .get(`http://localhost:3001/api/users/` + userEmail)
+      //       .then(response => {
+      //         console.log(response);
+      //         if (response.data.length === 0) {
+      //           this.setState({
+      //             formErrors: {
+      //               email: 'please ensure email is correct',
+      //               password: 'ensure your password is correct'
+      //             }
+      //           });
+      //           return; //this return breaks the function if there are form errors....
+      //         }
+      //         //you can do a further password check here which i shall skip...
+
+      //         this.setState({ redirect: true });
+      //         this.props.onLogin(); //this is tobe called on login sucess
+      //         const user = response.data;
+      //         console.log(user);
+      //         localStorage.setItem('user', JSON.stringify(user)); //store the item in local storage...
+      //       })
+      //       .catch(error => {
+      //         console.log(error.message, 'hello rushed');
+      //       });
+      //   }
+      // };
     }
   };
 

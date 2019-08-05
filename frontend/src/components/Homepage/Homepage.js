@@ -34,7 +34,7 @@ function Hompage() {
               style={{ height: '550px' }}
             >
               <div className="carousel-item active">
-                {/* <video
+                <video
                 className="video-fluid"
                 autoPlay
                 loop
@@ -42,14 +42,15 @@ function Hompage() {
                 style={{ height: '100%', width: '100%', objectFit: 'contain' }}
               >
                 <source
-                  // src="https://mdbootstrap.com/img/video/Tropical.mp4"
-                  src="https://www.youtube.com/watch?v=ppGA3iMhdGs"
+                   src="https://mdbootstrap.com/img/video/Tropical.mp4"
+                  // src="https://www.youtube.com/watch?v=svQ3jmx_BIo"
                   frameBorder="0"
                   allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture"
                   type="video/mp4"
                 />
+
               </video> */}
-                <video
+                {/* <video
                   // width="560"
                   // height="315"
                   className="video-fluid"
@@ -57,7 +58,8 @@ function Hompage() {
                   frameBorder="0"
                   allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                />
+                /> */}
+             
               </div>
               <div className="carousel-item">
                 <video className="video-fluid" autoPlay loop muted>
