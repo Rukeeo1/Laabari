@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
+import axios from 'axios';
 
 function VideoList() {
+    const [movies, setMovies] = useState('')
   // make a calll to the video url
   //loop through the table and append  it to a tr...
   useEffect(() => {
@@ -8,7 +10,11 @@ function VideoList() {
   });
 
   function getVideos(){
-    alert('hello rukee')
+    axios.get(`http://localhost:3001/api/users`).then(response => {
+        console.log(response)
+    }).catch(err => {
+        console.log(err.message)
+    })
   }
 
   return (
