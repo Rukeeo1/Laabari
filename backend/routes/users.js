@@ -39,10 +39,10 @@ router.post('/', async (req, res) => {
   //     res.send(err.message);
   //   });
   try {
-    const savedUser = await user.save()
+    const savedUser = await user.save();
     res.send(savedUser);
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
 });
 
@@ -75,21 +75,18 @@ router.post('/login', async (req, res) => {
   // console.log(req.body)
 
   // // const { error } = validateLoginEmail(req.body);
-  // console.log(error,'ooo');
-  // console.log(error)
 
   // if (error) return res.status(400).send(error.details[0].message);
-  console.log('i am just here to see my son')
+
   const user = await UserModel.findOne({ email: req.body.email });
-  console.log(user)
+
   if (!user) return res.status(400).send('Email Not Found!!!');
-  console.log(req.body.email);
 
   const password = user.password === req.body.password ? true : false;
-  console.log(password);
+
   if (!password) return res.status(400).send('Invalid password');
 
-  res.send({name: user.name, id : user._id, date: user.date})
+  res.send({ name: user.email, id: user._id, date: user.date });
 });
 /*
 
