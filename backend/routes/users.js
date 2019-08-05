@@ -17,10 +17,8 @@ router.get('/:email', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log('hello checking');
   const { error } = validateUser(req.body); //validation with joy
-  console.log(error);
-  console.log('hello agaain');
+
   if (error) return res.status(400).send(error.details[0].message); //returns an error if the validation fails
 
   user = new UserModel({
@@ -30,14 +28,6 @@ router.post('/', async (req, res) => {
     password: req.body.password
   });
 
-  // user //saves the object and sends the response back or returns an error, if something goes wrong...
-  //   .save()
-  //   .then(res => {
-  //     res.send(res);
-  //   })
-  //   .catch(err => {
-  //     res.send(err.message);
-  //   });
   try {
     const savedUser = await user.save();
     res.send(savedUser);
@@ -72,16 +62,18 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  // console.log(req.body)
+  console.log(req.body);
 
   // // const { error } = validateLoginEmail(req.body);
 
   // if (error) return res.status(400).send(error.details[0].message);
+  console.log({ email: req.body.email });
 
   const user = await UserModel.findOne({ email: req.body.email });
+  console.log(user,'hello i am user')
 
   if (!user) return res.status(400).send('Email Not Found!!!');
-
+console.log('i came here')
   const password = user.password === req.body.password ? true : false;
 
   if (!password) return res.status(400).send('Invalid password');
