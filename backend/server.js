@@ -12,6 +12,8 @@ const cors = require('cors');
 const app = express();
 const userRouter = require('./routes/users');
 const morgan = require('morgan');
+const  graphQLHTTP = require ('express-graphql');
+
 
 mongoose
   .connect('mongodb://localhost/labaari', { useNewUrlParser: true })
