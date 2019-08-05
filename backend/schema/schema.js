@@ -20,12 +20,12 @@ const MovieType = new GraphQLObjectType({
     title: { type: new GraphQLNonNull(GraphQLString) },
     year: { type: new GraphQLNonNull(GraphQLString) },
     src: { type: new GraphQLNonNull(GraphQLString) },
-    synopsis: { type: new GraphQLNonNull(GraphQLString) },
-    similarMovies: { type: new GraphQLNonNull(GraphQLObjectType) },
-    creator: { type: new GraphQLNonNull(GraphQLObjectType) },
-    cast: { type: new GraphQLNonNull(GraphQLObjectType) },
-    genre: { type: new GraphQLNonNull(GraphQLString) },
-    backgroundImage: { type: new GraphQLNonNull(GraphQLString) }
+    synopsis: { type: GraphQLNonNull(GraphQLString) },
+    similarMovies: { type: (GraphQLList) },
+    creator: { type: GraphQLList },
+    cast: { type: GraphQLList },
+    genre: { type: GraphQLNonNull(GraphQLString) },
+    backgroundImage: { type: GraphQLNonNull(GraphQLString) }
   })
 });
 
@@ -33,9 +33,11 @@ const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'returns all movies in the database',
   fields: () => ({
-    type: MovieType,
-    args: { id: { type: GraphQLString } },
-    resolve: (parent, args) => BookModel.findById(args.id)
+    movie: {
+      type: MovieType,
+      args: { id: { type: GraphQLString } },
+      resolve: (parent, args) => UserModel.findById(args.id)
+    }
   })
 });
 
