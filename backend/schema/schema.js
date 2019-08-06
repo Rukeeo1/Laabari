@@ -11,8 +11,7 @@ const {
 } = graphql;
 
 const { MovieModel } = require('../models/movies');
-const { MovieType } = require('../types-graphql/movie')
-
+const { MovieType } = require('../types-graphql/movie');
 
 // const MovieType = new GraphQLObjectType({
 //   name: 'Movie',
@@ -30,16 +29,13 @@ const { MovieType } = require('../types-graphql/movie')
 //   })
 // });
 
-
-
-
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'returns all movies in the database',
   fields: () => ({
     movie: {
       type: MovieType,
-      description:'returns a single movie',
+      description: 'returns a single movie',
       args: { id: { type: GraphQLString } },
       resolve: (parent, args) => MovieModel.findById(args.id)
     },
@@ -51,8 +47,45 @@ const RootQuery = new GraphQLObjectType({
   })
 });
 
+const RootMutation = new GraphQLObjectType({
+  name: 'RootMutation',
+  description: 'Handles all mutations: delete, post and update',
+  fields: () => ({
+    addMovie: {
+      type: MovieType,
+      args: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        year: { type: new GraphQLNonNull(GraphQLString) },
+        src: { type: new GraphQLNonNull(GraphQLString) },
+        synopsis: { type: GraphQLString },
+        similarMovies: { type: new GraphQLList(GraphQLString) },
+        creator: { type: new GraphQLList(GraphQLString) },
+        cast: { type: new GraphQLList(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        backgroundImage: { type: GraphQLNonNull(GraphQLString) }
+      },
+      resolve: (parent, args) => {
+        const movie = new MovieModel({
+          title: args.title,
+          year: args.title,
+          src: args.src,
+          synopsis: args.synopsis,
+          similarMovies: args.similarMovies,
+          creator: args.creator,
+          cast: args.cast,
+          genre: args.genre,
+          backgroundImage: args.backgroundImage
+        })
+
+        return movie.save();
+      }
+    }
+  })
+});
+
 const schema = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: RootMutation
 });
 
 module.exports = schema;
