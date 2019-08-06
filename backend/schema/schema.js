@@ -39,8 +39,14 @@ const RootQuery = new GraphQLObjectType({
   fields: () => ({
     movie: {
       type: MovieType,
+      description:'returns a single movie',
       args: { id: { type: GraphQLString } },
       resolve: (parent, args) => MovieModel.findById(args.id)
+    },
+    movies: {
+      type: new GraphQLList(MovieType),
+      description: 'returns all the movies',
+      resolve: (parent, args) => MovieModel.find()
     }
   })
 });
