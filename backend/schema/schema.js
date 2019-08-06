@@ -10,7 +10,7 @@ const {
   GraphQLList
 } = graphql;
 
-const { MovieModel } = require('../models/movies');
+const { MovieModel, validateMovie } = require('../models/movies');
 const { MovieType } = require('../types-graphql/movie');
 
 // const MovieType = new GraphQLObjectType({
@@ -56,6 +56,7 @@ const RootMutation = new GraphQLObjectType({
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
         year: { type: new GraphQLNonNull(GraphQLString) },
+        poster: {type : new GraphQLNonNull(GraphQLString)},
         src: { type: new GraphQLNonNull(GraphQLString) },
         synopsis: { type: GraphQLString },
         similarMovies: { type: new GraphQLList(GraphQLString) },
@@ -65,17 +66,25 @@ const RootMutation = new GraphQLObjectType({
         backgroundImage: { type: GraphQLNonNull(GraphQLString) }
       },
       resolve: (parent, args) => {
+        const { error } = validateMovie(args); //validation with joy
+        console.log(error);
+        console.log(args.poster)
+
+        if (error) {
+          throw new Error(error.details[0].message);
+        }
         const movie = new MovieModel({
           title: args.title,
           year: args.title,
           src: args.src,
+          poster: args.poster,
           synopsis: args.synopsis,
           similarMovies: args.similarMovies,
           creator: args.creator,
           cast: args.cast,
           genre: args.genre,
           backgroundImage: args.backgroundImage
-        })
+        });
 
         return movie.save();
       }

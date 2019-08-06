@@ -19,9 +19,9 @@ const movieSchema = new mongoose.Schema({
   synopsis: {
     type: String
   },
-  src: {
-    type: String
-  },
+  // src: {
+  //   type: String
+  // },
   similarMovies: {
     type: Array
   },
@@ -45,24 +45,25 @@ movieSchema.plugin(uniqueValidator);
 //use the schema above to create a the user model
 const MovieModel = mongoose.model('Movie', movieSchema);
 
-//an extra validation handle by Joi...
-function validateUser(user) {
+//this is meant to be a validate movie with joi
+function validateMovie(movie) {
   const schema = {
-    name: Joi.string()
+    title: Joi.string()
       .min(3)
-      .allow(''),
-    email: Joi.string().email(),
-    mobile: Joi.string()
-      .regex(/^\d{4}\d{3}\d{4}$/)
-      .allow(''),
-    isSubscribed: Joi.boolean(),
-    plan: Joi.string(),
-    password: Joi.string(),
-    date: Joi.date()
+      .required(),
+    year: Joi.string(),
+    poster: Joi.string().required(),
+    src: Joi.string().required(),
+    synopsis: Joi.string().required(),
+    similarMovies: Joi.array().items(Joi.string()),
+    creator: Joi.array().items(Joi.string()),
+    cast:Joi.array().items(Joi.string()),
+    genre: Joi.string().required(),
+    backgroundImage: Joi.string().required()
   };
 
-  return Joi.validate(user, schema);
+  return Joi.validate(movie, schema);
 }
 
 exports.MovieModel = MovieModel;
-// exports.validateUser = validateUser;
+exports.validateMovie = validateMovie;
