@@ -10,24 +10,27 @@ const {
   GraphQLList
 } = graphql;
 
-const { UserModel } = require('../models/users');
-console.log(UserModel);
+const { MovieModel } = require('../models/movies');
+
 
 const MovieType = new GraphQLObjectType({
   name: 'Movie',
   fields: () => ({
-    _id: { type: GraphQLString, resolve: source => source._id },
+    _id: { type: GraphQLString},
     title: { type: new GraphQLNonNull(GraphQLString) },
     year: { type: new GraphQLNonNull(GraphQLString) },
     src: { type: new GraphQLNonNull(GraphQLString) },
-    synopsis: { type: GraphQLNonNull(GraphQLString) },
-    similarMovies: { type: (GraphQLList) },
-    creator: { type: GraphQLList },
-    cast: { type: GraphQLList },
-    genre: { type: GraphQLNonNull(GraphQLString) },
+    synopsis: { type: GraphQLString },
+    similarMovies: { type: new  GraphQLList(GraphQLString) },
+    creator: { type:new  GraphQLList(GraphQLString) },
+    cast: { type:new  GraphQLList(GraphQLString)},
+    genre: { type:  new GraphQLNonNull(GraphQLString) },
     backgroundImage: { type: GraphQLNonNull(GraphQLString) }
   })
 });
+
+
+
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -36,7 +39,7 @@ const RootQuery = new GraphQLObjectType({
     movie: {
       type: MovieType,
       args: { id: { type: GraphQLString } },
-      resolve: (parent, args) => UserModel.findById(args.id)
+      resolve: (parent, args) => MovieModel.findById(args.id)
     }
   })
 });

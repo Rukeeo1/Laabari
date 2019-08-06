@@ -20,7 +20,7 @@ const movieSchema = new mongoose.Schema({
     type: String
   },
   src: {
-    type: link
+    type: String
   },
   similarMovies: {
     type: Array
@@ -40,10 +40,10 @@ const movieSchema = new mongoose.Schema({
 });
 
 //add the user plugin...
-userSchema.plugin(uniqueValidator);
+movieSchema.plugin(uniqueValidator);
 
 //use the schema above to create a the user model
-const UserModel = mongoose.model('User', userSchema);
+const MovieModel = mongoose.model('Movie', movieSchema);
 
 //an extra validation handle by Joi...
 function validateUser(user) {
@@ -64,5 +64,5 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 }
 
-exports.UserModel = movieModel;
-exports.validateUser = validateUser;
+exports.MovieModel = MovieModel;
+// exports.validateUser = validateUser;
