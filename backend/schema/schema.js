@@ -11,23 +11,8 @@ const {
 } = graphql;
 
 const { MovieModel, validateMovie } = require('../models/movies');
-const { MovieType } = require('../types-graphql/movie');
+const { MovieType, MovieInput } = require('../types-graphql/movie');
 
-// const MovieType = new GraphQLObjectType({
-//   name: 'Movie',
-//   fields: () => ({
-//     _id: { type: GraphQLString},
-//     title: { type: new GraphQLNonNull(GraphQLString) },
-//     year: { type: new GraphQLNonNull(GraphQLString) },
-//     src: { type: new GraphQLNonNull(GraphQLString) },
-//     synopsis: { type: GraphQLString },
-//     similarMovies: { type: new  GraphQLList(GraphQLString) },
-//     creator: { type:new  GraphQLList(GraphQLString) },
-//     cast: { type:new  GraphQLList(GraphQLString)},
-//     genre: { type:  new GraphQLNonNull(GraphQLString) },
-//     backgroundImage: { type: GraphQLNonNull(GraphQLString) }
-//   })
-// });
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -95,6 +80,20 @@ const RootMutation = new GraphQLObjectType({
       },
       resolve: (parent, args) => {
         const movie = MovieModel.findByIdAndRemove(args.id);
+        return movie;
+      }
+    },
+    updateMovie: {
+      type: MovieType,
+      description: 'Updates the movie details',
+      args: {
+        id: { type: GraphQLString },
+        input: { type: MovieInput}
+      },
+      resolve: async (parent, args) => {
+        console.log(args.input, 'hello');
+        console.log('hey...');
+        const movie = await MovieModel.findById(args.id);
 
         return movie;
       }

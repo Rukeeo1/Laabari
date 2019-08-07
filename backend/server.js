@@ -6,11 +6,13 @@ const app = express();
 const userRouter = require('./routes/users');
 const morgan = require('morgan');
 const schema = require('./schema/schema');
-const  graphQLHTTP = require ('express-graphql');
-
+const graphQLHTTP = require('express-graphql');
 
 mongoose
-  .connect('mongodb://localhost/labaari', { useNewUrlParser: true })
+  .connect('mongodb://localhost/labaari', {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
   .then(() => {
     console.log('Connected to labarri');
   })
@@ -31,8 +33,8 @@ app.use(
   '/graphql',
   graphQLHTTP({
     schema,
-    graphiql: true,
-  }),
+    graphiql: true
+  })
 );
 
 app.listen(port, () => {

@@ -7,7 +7,8 @@ const {
   GraphQLInt,
   GraphQLNonNull,
   GraphQLID,
-  GraphQLList
+  GraphQLList,
+  GraphQLInputObjectType
 } = graphql;
 
 const { MovieModel } = require('../models/movies');
@@ -27,5 +28,26 @@ const MovieType = new GraphQLObjectType({
     backgroundImage: { type: GraphQLNonNull(GraphQLString) }
   })
 });
+
+const MovieInput = new GraphQLInputObjectType({
+  name: 'MovieInputType',
+  fields: () => ({
+    title: {
+      type: GraphQLString
+    },
+    year: {
+      type: GraphQLString
+    },
+    src: { type: GraphQLString },
+    synopsis: { type: GraphQLString },
+    similarMovies: { type: new GraphQLList(GraphQLString) },
+    creator: { type: new GraphQLList(GraphQLString) },
+    cast: { type: new GraphQLList(GraphQLString) },
+    genre: { type: GraphQLString },
+    backgroundImage: { type: GraphQLString}
+  })
+});
+
+exports.MovieInput = MovieInput;
 
 exports.MovieType = MovieType;
