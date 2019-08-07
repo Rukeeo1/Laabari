@@ -56,7 +56,7 @@ const RootMutation = new GraphQLObjectType({
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
         year: { type: new GraphQLNonNull(GraphQLString) },
-        poster: {type : new GraphQLNonNull(GraphQLString)},
+        poster: { type: new GraphQLNonNull(GraphQLString) },
         src: { type: new GraphQLNonNull(GraphQLString) },
         synopsis: { type: GraphQLString },
         similarMovies: { type: new GraphQLList(GraphQLString) },
@@ -67,8 +67,6 @@ const RootMutation = new GraphQLObjectType({
       },
       resolve: (parent, args) => {
         const { error } = validateMovie(args); //validation with joy
-        console.log(error);
-        console.log(args.poster)
 
         if (error) {
           throw new Error(error.details[0].message);
@@ -87,6 +85,18 @@ const RootMutation = new GraphQLObjectType({
         });
 
         return movie.save();
+      }
+    },
+    deleteMovie: {
+      type: MovieType,
+      description: 'Deletes a single movie given the Id',
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => {
+        const movie = MovieModel.findByIdAndRemove(args.id);
+
+        return movie;
       }
     }
   })

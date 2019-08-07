@@ -19,9 +19,7 @@ const movieSchema = new mongoose.Schema({
   synopsis: {
     type: String
   },
-  // src: {
-  //   type: String
-  // },
+
   similarMovies: {
     type: Array
   },
@@ -57,7 +55,7 @@ function validateMovie(movie) {
     synopsis: Joi.string().required(),
     similarMovies: Joi.array().items(Joi.string()),
     creator: Joi.array().items(Joi.string()),
-    cast:Joi.array().items(Joi.string()),
+    cast: Joi.array().items(Joi.string()),
     genre: Joi.string().required(),
     backgroundImage: Joi.string().required()
   };
