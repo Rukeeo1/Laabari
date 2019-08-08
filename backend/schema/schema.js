@@ -13,7 +13,6 @@ const {
 const { MovieModel, validateMovie } = require('../models/movies');
 const { MovieType, MovieInput } = require('../types-graphql/movie');
 
-
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'returns all movies in the database',
@@ -88,12 +87,16 @@ const RootMutation = new GraphQLObjectType({
       description: 'Updates the movie details',
       args: {
         id: { type: GraphQLString },
-        input: { type: MovieInput}
+        input: { type: MovieInput }
       },
       resolve: async (parent, args) => {
-        console.log(args.input, 'hello');
-        console.log('hey...');
+        console.log(args, 'hello')
+        console.log(args.input)
+        console.log(args.input.title,'this is the title')
+        console.log(args.input.src,'hello vvv')
+        console.log(args.input.src)
         const movie = await MovieModel.findById(args.id);
+        console.log(movie)
 
         return movie;
       }
