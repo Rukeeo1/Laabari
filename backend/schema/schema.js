@@ -90,13 +90,23 @@ const RootMutation = new GraphQLObjectType({
         input: { type: MovieInput }
       },
       resolve: async (parent, args) => {
-        console.log(args, 'hello')
-        console.log(args.input)
-        console.log(args.input.title,'this is the title')
-        console.log(args.input.src,'hello vvv')
-        console.log(args.input.src)
         const movie = await MovieModel.findById(args.id);
-        console.log(movie)
+
+        (movie.title = args.input.title || movie.title),
+          (movie.src = args.input.src || movie.src),
+          (movie.poster = args.input.poster || movie.poster),
+          (movie.similarMovies =
+            args.input.similarMovies || movie.similarMovies);
+        movie.cast = args.input.cast || movie.cast;
+        movie.title = args.input.title || movie.title;
+        movie.synopsis = args.input.synopsis || movie.synopsis;
+        movie.genre = args.input.genre || movie.genre;
+        movie.backgroundImage =
+          args.input.backgroundImage || movie.backgroundImage;
+        movie.year = args.input.year || movie.year;
+
+        movie.save();
+        console.log(movie, 'after update');
 
         return movie;
       }
