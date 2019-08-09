@@ -9,9 +9,11 @@ const {
   GraphQLID,
   GraphQLList
 } = graphql;
-
+``;
 const { MovieModel, validateMovie } = require('../models/movies');
 const { MovieType, MovieInput } = require('../types-graphql/movie');
+const { findMovie } = require('../controllers/movies-controler');
+console.log(findMovie, 'hello');
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -27,6 +29,15 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(MovieType),
       description: 'returns all the movies',
       resolve: (parent, args) => MovieModel.find()
+    },
+
+    findMovie: {
+      type: new GraphQLList(MovieType),
+      description: 'should return a movie based on different search parameters',
+      args: {
+        input: { type: MovieInput }
+      },
+      resolve: (parent, args) => findMovie(args.input)
     }
   })
 });
@@ -106,7 +117,6 @@ const RootMutation = new GraphQLObjectType({
         movie.year = args.input.year || movie.year;
 
         movie.save();
-        console.log(movie, 'after update');
 
         return movie;
       }
@@ -120,3 +130,7 @@ const schema = new GraphQLSchema({
 });
 
 module.exports = schema;
+
+// what and what is left for me to do...
+//find a movie created a by certain user
+//find a movie by year, title, genre...

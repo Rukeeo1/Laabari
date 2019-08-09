@@ -44,7 +44,7 @@ const MovieInput = new GraphQLInputObjectType({
     creator: { type: new GraphQLList(GraphQLString) },
     cast: { type: new GraphQLList(GraphQLString) },
     genre: { type: GraphQLString },
-    backgroundImage: { type: GraphQLString}
+    backgroundImage: { type: GraphQLString }
   })
 });
 
