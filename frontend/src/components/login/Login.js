@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { alternateLogin } from '../../actions/index';
 import './css/Login.css';
-//import NavBar from './NavBar';
+
 
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 

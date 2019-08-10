@@ -1,42 +1,78 @@
 import React, { useEffect, useState } from 'react';
 import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
-import axios from 'axios';
 
 const movieQuery = gql`
   {
     movies {
+      _id
       title
       similarMovies
       year
       synopsis
+      creator
+      genre
     }
   }
 `;
 
 function VideoList(props) {
+  const deleteUser = (id) => {
+    alert(id)
+  };
   const [movies, setMovies] = useState('');
-  console.log(props.data, 'this is the props');
-  // make a calll to the video url
-  //loop through the table and append  it to a tr...
+
   useEffect(() => {
-    getVideos();
+    setMovies(props.data.movies);
   });
 
-  function getVideos() {
-    axios
-      .get(`http://localhost:3001/api/users`)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
+  if (!movies) {
+    return '';
   }
 
   return (
     <>
-      <p>i am a list of all the videos you have...</p>
+      <div className="table-responsive">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+
+              <th scope="col">Year</th>
+              <th scope="col">Created By</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Actions</th>
+
+              <th scope="col" />
+            </tr>
+          </thead>
+          <tbody>
+            {movies.map((movie, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{movie.title}</td>
+                  <td>{movie.year}</td>
+                  <td>{movie.creator[0]}</td>
+                  <td>{movie.genre}</td>
+                  <td onClick={() => deleteUser(movie._id)}>
+                    <i
+                      className="far fa-trash-alt"
+                      onClick={() => deleteUser(movie._id)}
+                    />
+                    <i
+                      className="fas fa-paint-brush-alt"
+                      data-toggle="modal"
+                      data-target="#modalRegisterForm"
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
