@@ -4,24 +4,27 @@ import { movieQuery, deleteMovie } from '../../queries/queries';
 import './css/VideoList.css';
 
 function VideoList(props) {
-  const deleteUser = id => {
-  alert(id);
-  console.log(id)
- // props.deleteMovie(id)
- props.deleteMovie({
-   variables:{
-     id:id
-   }
- })
-
-  };
-
   const [movies, setMovies] = useState('');
-  console.log(props.deleteMovie)
 
   useEffect(() => {
     setMovies(props.movieQuery.movies);
   });
+
+  const deleteUser = id => {
+    //deletes the data
+    props.deleteMovie({
+      variables: {
+        id: id
+      },
+      refetchQueries: [{ query: movieQuery }]
+    });
+
+    // //filters the movies array and updates the state...
+    // const newMovieArray = [...movies];
+    // const moviesAfterDelete = newMovieArray.filter(movie => movie._id !== id);
+    // console.log(moviesAfterDelete);
+    //setMovies(moviesAfterDelete);
+  };
 
   if (!movies) {
     return '';
@@ -55,7 +58,7 @@ function VideoList(props) {
                     <i className="far fa-trash-alt" />
 
                     <i
-                      class="far fa-edit edit-button"
+                      className="far fa-edit edit-button"
                       data-toggle="modal"
                       data-target="#modalRegisterForm"
                     />
