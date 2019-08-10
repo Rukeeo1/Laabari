@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { graphql } from 'react-apollo';
-import { movieQuery } from '../../queries/queries';
+import { graphql, compose } from 'react-apollo';
+import { movieQuery, deleteMovie } from '../../queries/queries';
 import './css/VideoList.css';
 
 function VideoList(props) {
   const deleteUser = id => {
-    alert(id);
+  alert(id);
+  console.log(id)
+ // props.deleteMovie(id)
+ props.deleteMovie({
+   variables:{
+     id:id
+   }
+ })
+
   };
+
   const [movies, setMovies] = useState('');
+  console.log(props.deleteMovie)
 
   useEffect(() => {
-    setMovies(props.data.movies);
+    setMovies(props.movieQuery.movies);
   });
 
   if (!movies) {
@@ -25,12 +35,10 @@ function VideoList(props) {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Title</th>
-
               <th scope="col">Year</th>
               <th scope="col">Created By</th>
               <th scope="col">Genre</th>
               <th scope="col">Actions</th>
-
               <th scope="col" />
             </tr>
           </thead>
@@ -62,4 +70,9 @@ function VideoList(props) {
   );
 }
 
-export default graphql(movieQuery)(VideoList);
+export default compose(
+  graphql(movieQuery, { name: 'movieQuery' }),
+  graphql(deleteMovie, { name: 'deleteMovie' })
+)(VideoList);
+
+//export default graphql(movieQuery)(VideoList);
