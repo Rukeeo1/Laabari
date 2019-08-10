@@ -9,12 +9,11 @@ import SignUp from './components/signup/SignUp';
 import VideoDetails from './components/video-details/VideoDetails';
 import MainSection from './components/dashboard/MainSection';
 import './App.css';
-console.log(AppolloClient, 'hello');
 
 const client = new AppolloClient({
   uri: 'http://localhost:3001/graphql'
 });
-console.log(client, 'hello rukee');
+
 function App() {
   return (
     <ApolloProvider client={client}>

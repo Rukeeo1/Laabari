@@ -9,7 +9,7 @@ const {
   GraphQLID,
   GraphQLList
 } = graphql;
-``;
+
 const { MovieModel, validateMovie } = require('../models/movies');
 const { MovieType, MovieInput } = require('../types-graphql/movie');
 const { findMovie } = require('../controllers/movies-controler');
@@ -89,6 +89,7 @@ const RootMutation = new GraphQLObjectType({
         id: { type: GraphQLString }
       },
       resolve: (parent, args) => {
+        console.log(args, 'hello after you updated the id');
         const movie = MovieModel.findByIdAndRemove(args.id);
         return movie;
       }
@@ -135,14 +136,13 @@ module.exports = schema;
 //find a movie created a by certain user
 //find a movie by year, title, genre...
 
-
 /**
  what i might simply do here is get all the contacts and loop through,
  if the contacts i = created id then we are good to go....
  do that at the front end....
  */
 
- /***
-  * 
-  * how do you get the data from back end to fron end....
-  */
+/***
+ *
+ * how do you get the data from back end to fron end....
+ */
