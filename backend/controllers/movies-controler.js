@@ -1,20 +1,10 @@
-const {MovieModel} = require('../models/movies');
+const { MovieModel } = require('../models/movies');
 
- async function findMovie(query) {
+async function findMovie(query) {
   return MovieModel.find({
-    $or: [
-      { title: query.title },
-      { year: query.year },
-      { genre: query.genre }
-      //   { phone: query }
-    ]
+    $or: [{ title: query.title }, { year: query.year }, { genre: query.genre }]
   });
-  console.log(query, 'i am the one');
 }
 
-findMovie({title:'hello us'}).then(res=>{
-    console.log(res,'hello')
-}).catch(err => {
-    console.log(err)
-})
-exports.findMovie = findMovie
+
+exports.findMovie = findMovie;

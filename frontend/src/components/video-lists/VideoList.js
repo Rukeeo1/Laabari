@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { gql } from 'apollo-boost';
+import { graphql } from 'react-apollo';
 import axios from 'axios';
 
-function VideoList() {
+const movieQuery = gql`
+  {
+    movies {
+      title
+      similarMovies
+      year
+      synopsis
+    }
+  }
+`;
+
+function VideoList(props) {
   const [movies, setMovies] = useState('');
+  console.log(props.data, 'this is the props');
   // make a calll to the video url
   //loop through the table and append  it to a tr...
   useEffect(() => {
@@ -27,4 +41,4 @@ function VideoList() {
   );
 }
 
-export default VideoList;
+export default graphql(movieQuery)(VideoList);
