@@ -10,7 +10,20 @@ function VideoList(props) {
     setMovies(props.movieQuery.movies);
   });
 
-  const saveUpdateInfo = () => {};
+  const placeholderValue = (id, index) => {
+    // alert(index);
+    const movieObjectAtThatIndex = movies[index];
+    console.log(movieObjectAtThatIndex, 'the movie');
+    document.getElementById('title').placeholder = movieObjectAtThatIndex.title;
+    document.getElementById('movie-year').placeholder =
+      movieObjectAtThatIndex.year;
+      document.getElementById('created-by').placeholder =
+      movieObjectAtThatIndex.creator[0];
+      document.getElementById('genre').placeholder =
+      movieObjectAtThatIndex.genre;
+  };
+
+  //const saveUpdateInfo = () => {};
 
   const deleteUser = id => {
     //deletes the data
@@ -31,63 +44,50 @@ function VideoList(props) {
     <>
       {/* i can do all things through Christ who strengthens me */}
 
-      <div class="modal fade" id="mymodal">
-        <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
+      <div className="modal fade" id="mymodal">
+        <div className="modal-dialog modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
               <h3>Update Movie Details</h3>
               <br />
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <input
                 type="text"
-                id="Email"
-                placeholder="Email"
-                class="form-control"
+                id="title"
+                placeholder="Title"
+                className="form-control"
                 required
               />
               <br />
               <input
                 type="text"
-                id="mobile-number"
-                placeholder="Mobile Number linked With BVN"
-                class="form-control"
+                id="movie-year"
+                placeholder="year"
+                className="form-control"
               />
               <br />
               <input
                 type="text"
-                id="bvn"
-                placeholder="BVN"
-                class="form-control"
+                id="created-by"
+                placeholder="Created  By"
+                className="form-control"
               />
               <br />
+
               <input
-                type="date"
-                id="date-of-birth"
-                placeholder="Email"
-                class="form-control"
-              />
-              <br />
-              <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                class="form-control"
-              />
-              <br />
-              <input
-                type="password"
-                id="confirm-password"
-                placeholder="Please Confirm Password"
-                class="form-control"
+                type="text"
+                id="genre"
+                placeholder="Genre"
+                className="form-control"
               />
               <br />
             </div>
-            <div class="modal-footer">
-              <button id="" class="btn btn-primary" data-dismiss="modal">
+            <div className="modal-footer">
+              <button id="" className="btn btn-primary" data-dismiss="modal">
                 Close
               </button>
-              <button id="submitButton" class="btn btn-primary">
+              <button id="submitButton" className="btn btn-primary">
                 Submit
               </button>
             </div>
@@ -121,11 +121,9 @@ function VideoList(props) {
                   <td onClick={() => deleteUser(movie._id)}>
                     <i className="far fa-trash-alt" />
                   </td>
-                  <td>
+                  <td onClick={() => placeholderValue(movie._id, index)}>
                     <i
                       className="far fa-edit edit-button"
-                      // data-toggle="modal"
-                      // data-target="#modalContactForm"
                       data-toggle="modal"
                       data-target="#mymodal"
                     />
@@ -144,5 +142,3 @@ export default compose(
   graphql(movieQuery, { name: 'movieQuery' }),
   graphql(deleteMovie, { name: 'deleteMovie' })
 )(VideoList);
-
-//export default graphql(movieQuery)(VideoList);
