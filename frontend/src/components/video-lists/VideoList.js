@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
-
-const movieQuery = gql`
-  {
-    movies {
-      _id
-      title
-      similarMovies
-      year
-      synopsis
-      creator
-      genre
-    }
-  }
-`;
+import { movieQuery } from '../../queries/queries';
+import './css/VideoList.css';
 
 function VideoList(props) {
-  const deleteUser = (id) => {
-    alert(id)
+  const deleteUser = id => {
+    alert(id);
   };
   const [movies, setMovies] = useState('');
 
@@ -57,12 +44,10 @@ function VideoList(props) {
                   <td>{movie.creator[0]}</td>
                   <td>{movie.genre}</td>
                   <td onClick={() => deleteUser(movie._id)}>
+                    <i className="far fa-trash-alt" />
+
                     <i
-                      className="far fa-trash-alt"
-                      onClick={() => deleteUser(movie._id)}
-                    />
-                    <i
-                      className="fas fa-paint-brush-alt"
+                      class="far fa-edit edit-button"
                       data-toggle="modal"
                       data-target="#modalRegisterForm"
                     />
