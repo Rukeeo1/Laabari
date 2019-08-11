@@ -11,19 +11,31 @@ function VideoList(props) {
   });
 
   const placeholderValue = (id, index) => {
+    console.log(id, 'hello rukee');
     // alert(index);
     const movieObjectAtThatIndex = movies[index];
-    console.log(movieObjectAtThatIndex, 'the movie');
     document.getElementById('title').placeholder = movieObjectAtThatIndex.title;
     document.getElementById('movie-year').placeholder =
       movieObjectAtThatIndex.year;
-      document.getElementById('created-by').placeholder =
+    document.getElementById('created-by').placeholder =
       movieObjectAtThatIndex.creator[0];
-      document.getElementById('genre').placeholder =
-      movieObjectAtThatIndex.genre;
+    document.getElementById('genre').placeholder = movieObjectAtThatIndex.genre;
   };
 
-  //const saveUpdateInfo = () => {};
+  const saveUpdateInfo = () => {
+    alert('uuuuu')
+    const title = document.getElementById('title').value || document.getElementById('title').placeholder;
+    const moiveYear = document.getElementById('movie-year').value || document.getElementById('movie-year').placeholder;
+    const createdBy = document.getElementById('created-by').value || document.getElementById('created-by').placeholder;
+    const genre = document.getElementById('genre').value || document.getElementById('genre').placeholder;
+
+    console.log({
+      title,
+      moiveYear,
+      createdBy,
+      genre
+    })
+  };
 
   const deleteUser = id => {
     //deletes the data
@@ -87,7 +99,7 @@ function VideoList(props) {
               <button id="" className="btn btn-primary" data-dismiss="modal">
                 Close
               </button>
-              <button id="submitButton" className="btn btn-primary">
+              <button id="submitButton" className="btn btn-primary"  onClick={() => saveUpdateInfo()}>
                 Submit
               </button>
             </div>

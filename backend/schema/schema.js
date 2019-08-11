@@ -102,7 +102,11 @@ const RootMutation = new GraphQLObjectType({
         input: { type: MovieInput }
       },
       resolve: async (parent, args) => {
+        console.log('we were here')
+        console.log(args)
         const movie = await MovieModel.findById(args.id);
+ 
+       
 
         (movie.title = args.input.title || movie.title),
           (movie.src = args.input.src || movie.src),
@@ -116,7 +120,8 @@ const RootMutation = new GraphQLObjectType({
         movie.backgroundImage =
           args.input.backgroundImage || movie.backgroundImage;
         movie.year = args.input.year || movie.year;
-
+        
+       console.log(movie.creator,'hello boo')
         movie.save();
 
         return movie;
