@@ -102,27 +102,32 @@ const RootMutation = new GraphQLObjectType({
         input: { type: MovieInput }
       },
       resolve: async (parent, args) => {
-        console.log('we were here');
+        console.log('we being sure');
         console.log(args);
-        const movie = await MovieModel.findById(args.id);
-
-        (movie.title = args.input.title || movie.title),
-          (movie.src = args.input.src || movie.src),
-          (movie.poster = args.input.poster || movie.poster),
-          (movie.similarMovies =
-            args.input.similarMovies || movie.similarMovies);
-        movie.cast = args.input.cast || movie.cast;
-        movie.title = args.input.title || movie.title;
-        movie.synopsis = args.input.synopsis || movie.synopsis;
-        movie.genre = args.input.genre || movie.genre;
-        movie.backgroundImage =
-          args.input.backgroundImage || movie.backgroundImage;
-        movie.year = args.input.year || movie.year;
-        movie.creator = args.input.creator || movie.creator;
-        console.log(movie.creator, 'hello boo');
-        movie.save();
-
-        return movie;
+        try {
+          
+          const movie = await MovieModel.findById(args.id);
+  
+          (movie.title = args.input.title || movie.title),
+            (movie.src = args.input.src || movie.src),
+            (movie.poster = args.input.poster || movie.poster),
+            (movie.similarMovies =
+              args.input.similarMovies || movie.similarMovies);
+          movie.cast = args.input.cast || movie.cast;
+          movie.title = args.input.title || movie.title;
+          movie.synopsis = args.input.synopsis || movie.synopsis;
+          movie.genre = args.input.genre || movie.genre;
+          movie.backgroundImage =
+            args.input.backgroundImage || movie.backgroundImage;
+          movie.year = args.input.year || movie.year;
+          movie.creator = args.input.creator || movie.creator;
+  
+          movie.save();
+  
+          return movie;
+        } catch (error) {
+          console.log(error.message,'ello')
+        }
       }
     }
   })
