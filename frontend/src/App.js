@@ -18,7 +18,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="App container-fluid">
+        <div className="App">
           <Navbar />
           <Switch>
             {/* <Homepage /> */}
