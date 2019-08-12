@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { movieQuery, deleteMovie } from '../../queries/queries';
+import { movieQuery, deleteMovie, updateMovie } from '../../queries/queries';
 import './css/VideoList.css';
 
 function VideoList(props) {
   const [movies, setMovies] = useState('');
+  const [idToBeUpdated, setIDToBeUpdated] = useState('');
 
   useEffect(() => {
     setMovies(props.movieQuery.movies);
@@ -12,7 +13,7 @@ function VideoList(props) {
 
   const placeholderValue = (id, index) => {
     console.log(id, 'hello rukee');
-    // alert(index);
+    alert(index);
     const movieObjectAtThatIndex = movies[index];
     document.getElementById('title').placeholder = movieObjectAtThatIndex.title;
     document.getElementById('movie-year').placeholder =
@@ -20,21 +21,44 @@ function VideoList(props) {
     document.getElementById('created-by').placeholder =
       movieObjectAtThatIndex.creator[0];
     document.getElementById('genre').placeholder = movieObjectAtThatIndex.genre;
+    setIDToBeUpdated(id);
   };
 
   const saveUpdateInfo = () => {
-    alert('uuuuu')
-    const title = document.getElementById('title').value || document.getElementById('title').placeholder;
-    const moiveYear = document.getElementById('movie-year').value || document.getElementById('movie-year').placeholder;
-    const createdBy = document.getElementById('created-by').value || document.getElementById('created-by').placeholder;
-    const genre = document.getElementById('genre').value || document.getElementById('genre').placeholder;
+    alert('uuuuu');
+    const title =
+      document.getElementById('title').value ||
+      document.getElementById('title').placeholder;
+    const year =
+      document.getElementById('movie-year').value ||
+      document.getElementById('movie-year').placeholder;
+    const createdBy =
+      document.getElementById('created-by').value ||
+      document.getElementById('created-by').placeholder;
+    const genre =
+      document.getElementById('genre').value ||
+      document.getElementById('genre').placeholder;
 
     console.log({
       title,
-      moiveYear,
-      createdBy,
+      year,
+      creator: [createdBy],
       genre
-    })
+    });
+   
+    console.log(idToBeUpdated,'this is the id');
+    //deletes the data
+    props.updateMovie({
+      variables: {
+        id: idToBeUpdated,
+        title,
+        year,
+        creator: [createdBy],
+        genre
+      },
+      //fetches the query again and updates the dom
+      refetchQueries: [{ query: movieQuery  }]
+    });
   };
 
   const deleteUser = id => {
@@ -51,6 +75,8 @@ function VideoList(props) {
   if (!movies) {
     return '';
   }
+
+  console.log(props);
 
   return (
     <>
@@ -99,7 +125,11 @@ function VideoList(props) {
               <button id="" className="btn btn-primary" data-dismiss="modal">
                 Close
               </button>
-              <button id="submitButton" className="btn btn-primary"  onClick={() => saveUpdateInfo()}>
+              <button
+                id="submitButton"
+                className="btn btn-primary"
+                onClick={() => saveUpdateInfo()}
+              >
                 Submit
               </button>
             </div>
@@ -152,5 +182,6 @@ function VideoList(props) {
 
 export default compose(
   graphql(movieQuery, { name: 'movieQuery' }),
-  graphql(deleteMovie, { name: 'deleteMovie' })
+  graphql(deleteMovie, { name: 'deleteMovie' }),
+  graphql(updateMovie, { name: 'updateMovie' })
 )(VideoList);

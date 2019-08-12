@@ -15,12 +15,28 @@ const movieQuery = gql`
 `;
 
 const deleteMovie = gql`
-  mutation($id:String!) {
-    deleteMovie(id:$id) {
+  mutation($id: String!) {
+    deleteMovie(id: $id) {
       title
       _id
     }
   }
 `;
-console.log(deleteMovie, 'hello');
-export { movieQuery, deleteMovie};
+
+const updateMovie = gql`
+  mutation($id: String!, $title: String!, $year: String!, $genre: String!) {
+    updateMovie(
+      id: $id
+      input: {
+        title: $title
+        year: $year
+        creator: ["hello this", "penny"]
+        genre: $genre
+      }
+    ) {
+      title
+    }
+  }
+`;
+
+export { movieQuery, deleteMovie, updateMovie };

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { alternateLogin } from '../../actions/index';
+import '../navbar/css/Navabar.css'
 
 function Navbar(props) {
   const loginStatus = useSelector(state => state.isLoggedIn);
