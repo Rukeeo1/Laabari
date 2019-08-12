@@ -4,7 +4,7 @@ import {Link } from 'react-router-dom';
 function SideBar() {
   return (
     <>
-      <div className="col-sm-3 sidebar">
+      <div className="col-sm-2 sidebar">
         <div>
           <ul className="nav-tabs li-style">
             <li className="nav-item">

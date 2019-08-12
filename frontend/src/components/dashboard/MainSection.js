@@ -10,7 +10,7 @@ function MainSection() {
     <div className="">
       <div className="row">
         <Sidebar />
-        <div className="col-sm-9" style={{ backgroundColor: 'white' }}>
+        <div className="col-sm-10" style={{ backgroundColor: 'white' }}>
           <Switch>
             <Route exact path="/dashboard/users" component={Users} />
             <Route exact path="/dashboard/videos" component={VideoList} />
