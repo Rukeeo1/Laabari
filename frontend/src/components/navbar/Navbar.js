@@ -15,13 +15,13 @@ function Navbar(props) {
           <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             Labaari
           </Link>
-          <button
+          {/* <button
             onClick={() => {
               dispatch(alternateLogin());
             }}
           >
             hello + {loginStatus}
-          </button>
+          </button> */}
         </div>
         <button
           className="navbar-toggler"

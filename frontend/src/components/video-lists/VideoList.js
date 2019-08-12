@@ -12,7 +12,6 @@ function VideoList(props) {
   });
 
   const placeholderValue = (id, index) => {
-    console.log(id, 'hello rukee');
     alert(index);
     const movieObjectAtThatIndex = movies[index];
     document.getElementById('title').placeholder = movieObjectAtThatIndex.title;
@@ -45,8 +44,8 @@ function VideoList(props) {
       creator: [createdBy],
       genre
     });
-   
-    console.log(idToBeUpdated,'this is the id');
+
+    console.log(idToBeUpdated, 'this is the id');
     //deletes the data
     props.updateMovie({
       variables: {
@@ -57,7 +56,7 @@ function VideoList(props) {
         genre
       },
       //fetches the query again and updates the dom
-      refetchQueries: [{ query: movieQuery  }]
+      refetchQueries: [{ query: movieQuery }]
     });
   };
 

@@ -7,7 +7,7 @@ import Sidebar from './SideNav';
 
 function MainSection() {
   return (
-    <div className="container">
+    <div className="">
       <div className="row">
         <Sidebar />
         <div className="col-sm-9" style={{ backgroundColor: 'white' }}>
