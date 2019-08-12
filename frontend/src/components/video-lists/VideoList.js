@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { graphql, compose } from 'react-apollo';
 import { movieQuery, deleteMovie, updateMovie } from '../../queries/queries';
+import AddMovieModal from '../Modal';
+
 import './css/VideoList.css';
 
 function VideoList(props) {
@@ -24,7 +26,6 @@ function VideoList(props) {
   };
 
   const saveUpdateInfo = () => {
-    alert('uuuuu');
     const title =
       document.getElementById('title').value ||
       document.getElementById('title').placeholder;
@@ -45,7 +46,6 @@ function VideoList(props) {
       genre
     });
 
-    console.log(idToBeUpdated, 'this is the id');
     //deletes the data
     props.updateMovie({
       variables: {
@@ -75,11 +75,10 @@ function VideoList(props) {
     return '';
   }
 
-  console.log(props);
-
   return (
     <>
       {/* i can do all things through Christ who strengthens me */}
+      <AddMovieModal />
 
       <div className="modal fade" id="mymodal">
         <div className="modal-dialog modal-dialog-scrollable">
@@ -135,8 +134,42 @@ function VideoList(props) {
           </div>
         </div>
       </div>
+     
 
       {/*  */}
+      {/* above the table here, i would be bringing in a form */}
+      {/* <SearchForm /> */}
+      <div className="row">
+        <div
+          className="col "
+          style={{ height: '100px', background: '#f1f1f1' }}
+        >
+          <form
+            className="example"
+            style={{ marginTop: '20px', maxWidth: '300px' }}
+          >
+            <input
+              className="input-for-search"
+              type="text"
+              placeholder="Search.."
+              name="search2"
+            />
+            <button type="submit">
+              <i className="fa fa-search" />
+            </button>
+          </form>
+        </div>
+        <button
+          className="addMovie btn-success"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Add Movie
+        </button>
+      </div>
+
+      {/* searchForm goes in  above */}
+
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
@@ -174,6 +207,7 @@ function VideoList(props) {
             })}
           </tbody>
         </table>
+        
       </div>
     </>
   );

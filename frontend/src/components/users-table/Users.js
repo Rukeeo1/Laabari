@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 //import { getUsers } from './helper/axios-requests';
+import SearchForm from '../search-form/SearchForm';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -21,7 +22,7 @@ function Users() {
   }
 
   const deleteUser = id => {
-    alert(id);
+    // alert(id);
     const usersAfterDelete = users.filter(user => user._id !== id);
     axios
       .delete(`http://localhost:3001/api/users/${id}`)
@@ -37,6 +38,7 @@ function Users() {
   return (
     <>
       <div>
+        {/* modal for updating users details */}
         <div
           className="modal fade"
           id="modalRegisterForm"
@@ -113,24 +115,24 @@ function Users() {
           </div>
         </div>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <a
             href=""
             className="btn btn-default btn-rounded mb-4"
             data-toggle="modal"
             data-target="#modalRegisterForm"
-          >
-            Launch Modal Register Form
-          </a>
-        </div>
+          > */}
+        {/* Launch Modal Register Form */}
+        {/* </a>
+        </div> */}
       </div>
+      <SearchForm />
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Email</th>
-              {/* <th scope="col">Phone</th> */}
               <th scope="col">Plan</th>
               <th scope="col">Subscription(paid)</th>
               <th scope="col">Actions</th>
@@ -153,10 +155,7 @@ function Users() {
                     />
                   </td>
                   <td onClick={() => deleteUser(user._id)}>
-                    <i
-                      className="far fa-trash-alt"
-                      // onClick={() => deleteUser(user.id)}
-                    />
+                    <i className="far fa-trash-alt" />
                   </td>
                 </tr>
               );

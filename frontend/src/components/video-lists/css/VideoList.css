@@ -1,3 +1,23 @@
-.edit-button{
-    margin-left: 8px;
+.edit-button {
+  margin-left: 8px;
+}
+
+.addMovie {
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.fa-trash-alt{
+    color:red;
+    font-weight: 700;
+}
+
+.fa-edit{
+color:blue;
 }
