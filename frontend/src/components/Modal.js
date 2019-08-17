@@ -1,6 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { valueToObjectRepresentation } from 'apollo-utilities';
 
 function AddMovieModal() {
+  // const [createMovieState, setCreateMovieState] = useState({
+  //   title: '',
+  //   year: '',
+  //   creator: '',
+  //   genre: '',
+  //   synopsis: '',
+  //   actorOne: '',
+  //   actorTwo: '',
+  //   actorThree: '',
+  //   actorFour: '',
+  //   backgroundImage: '',
+  //   poster: '',
+  //   src: ''
+  // });
+  const [createMovieState, setCreateMovieState] = useState({})
+
+  const saveChanges = () => {
+   // alert('hello rukee');
+    console.log(createMovieState);
+    setCreateMovieState({
+      title: '',
+      year: '',
+      creator: '',
+      genre: '',
+      synopsis: '',
+      actorOne: '',
+      actorTwo: '',
+      actorThree: '',
+      actorFour: '',
+      backgroundImage: '',
+      poster: '',
+      src: ''
+    })
+  };
+
+  const handleChange = event => {
+    //alert(event.target.value)
+
+    setCreateMovieState({
+      ...createMovieState,
+      [event.target.name]: event.target.value
+    });
+  };
+  console.log(createMovieState, 'this is meant to be the state');
   return (
     <>
       {/* <!-- The Modal --> */}
@@ -28,6 +73,8 @@ function AddMovieModal() {
                     type="text"
                     placeholder="Title"
                     name="title"
+                    onChange={handleChange}
+                    value={createMovieState.title}
                   />
                   <div className="create-flex">
                     <span>Year</span>
@@ -35,27 +82,31 @@ function AddMovieModal() {
                       className="input-for-search form-control-plaintext"
                       type="text"
                       placeholder="Year"
-                      name="title"
+                      name="year"
+                      onChange={handleChange}
                     />
                   </div>
                   <input
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Created By"
-                    name="title"
+                    name="creator"
+                    onChange={handleChange}
                   />
                   <input
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Genre"
-                    name="title"
+                    name="genre"
+                    onChange={handleChange}
                   />
                   <input
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Synopsis"
-                    name="title"
+                    name="synopsis"
                     style={{ height: '100px' }}
+                    onChange={handleChange}
                   />
                   <div>
                     <p>Cast</p>
@@ -64,25 +115,29 @@ function AddMovieModal() {
                         className="input-for-search form-control-plaintext"
                         type="text"
                         placeholder="Actor as ...."
-                        name="title"
+                        name="actorOne"
+                        onChange={handleChange}
                       />
                       <input
                         className="input-for-search form-control-plaintext"
                         type="text"
                         placeholder="Actor as ...."
-                        name="title"
+                        name="actorTwo"
+                        onChange={handleChange}
                       />
                       <input
                         className="input-for-search form-control-plaintext"
                         type="text"
                         placeholder="Actor as ...."
-                        name="title"
+                        name="actorThree"
+                        onChange={handleChange}
                       />
                       <input
                         className="input-for-search form-control-plaintext"
                         type="text"
                         placeholder="Actor as ...."
-                        name="title"
+                        name="actorFour"
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -90,24 +145,23 @@ function AddMovieModal() {
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Background Image...."
-                    name="title"
+                    name="backgroungImage"
+                    onChange={handleChange}
                   />
                   <input
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Poster...."
-                    name="title"
+                    name="poster"
+                    onChange={handleChange}
                   />
                   <input
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Movie Link...."
-                    name="title"
+                    name="src"
+                    onChange={handleChange}
                   />
-                  a
-                  <button type="submit">
-                    <i className="fa fa-search" />
-                  </button>
                 </form>
 
                 {/* <!-- Modal footer --> */}
@@ -119,7 +173,11 @@ function AddMovieModal() {
                   >
                     Close
                   </button>
-                  <button type="button" className="btn btn-primary">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={saveChanges}
+                  >
                     Save changes
                   </button>
                 </div>
