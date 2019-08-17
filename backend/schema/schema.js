@@ -68,7 +68,7 @@ const RootMutation = new GraphQLObjectType({
         }
         const movie = new MovieModel({
           title: args.title,
-          year: args.title,
+          year: args.year,
           src: args.src,
           poster: args.poster,
           synopsis: args.synopsis,
@@ -89,7 +89,6 @@ const RootMutation = new GraphQLObjectType({
         id: { type: GraphQLString }
       },
       resolve: (parent, args) => {
-        console.log(args, 'hello after you updated the id');
         const movie = MovieModel.findByIdAndRemove(args.id);
         return movie;
       }
@@ -102,12 +101,9 @@ const RootMutation = new GraphQLObjectType({
         input: { type: MovieInput }
       },
       resolve: async (parent, args) => {
-        console.log('we being sure');
-        console.log(args);
         try {
-          
           const movie = await MovieModel.findById(args.id);
-  
+
           (movie.title = args.input.title || movie.title),
             (movie.src = args.input.src || movie.src),
             (movie.poster = args.input.poster || movie.poster),
@@ -121,12 +117,12 @@ const RootMutation = new GraphQLObjectType({
             args.input.backgroundImage || movie.backgroundImage;
           movie.year = args.input.year || movie.year;
           movie.creator = args.input.creator || movie.creator;
-  
+
           movie.save();
-  
+
           return movie;
         } catch (error) {
-          console.log(error.message,'ello')
+          console.log(error.message, 'ello');
         }
       }
     }
