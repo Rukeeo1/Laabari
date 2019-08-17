@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { valueToObjectRepresentation } from 'apollo-utilities';
+import { graphql, compose } from 'react-apollo';
+import { movieQuery, deleteMovie, updateMovie } from '../queries/queries';
 
-function AddMovieModal() {
+
+console.log(movieQuery);
+
+function AddMovieModal(props) {
   // const [createMovieState, setCreateMovieState] = useState({
   //   title: '',
   //   year: '',
@@ -16,11 +20,44 @@ function AddMovieModal() {
   //   poster: '',
   //   src: ''
   // });
-  const [createMovieState, setCreateMovieState] = useState({})
+  const [createMovieState, setCreateMovieState] = useState({});
+  console.log(createMovieState,'hello rukee')
 
   const saveChanges = () => {
-   // alert('hello rukee');
-    console.log(createMovieState);
+    console.log(createMovieState)
+  
+   const  variables = {
+      title: createMovieState.title,
+      year: createMovieState.year,
+      poster: createMovieState.poster,
+      src: createMovieState.src,
+      synopsis: createMovieState.synopsis,
+      similarMovies: [createMovieState.similarMovies],
+      creator: [createMovieState.createdBy],
+      cast:[createMovieState.actorOne,createMovieState.actorTwo,createMovieState.actorThree, createMovieState.actorFour],
+      genre:createMovieState.genre,
+      backgroundImage: [createMovieState.backgroundImage],
+      poster:[createMovieState.poster]
+    }
+
+    console.log(variables,'these are the variables')
+    // console.log(variables,'hello rukee')
+    // props.addMovie({
+    //   variables: {
+    //     title,
+    //     year,
+    //     poster,
+    //     src,
+    //     synopsis,
+    //     similarMovies: [createMovieState.similarMovies],
+    //     creator: [createMovieState.createdBy],
+    //     cast:[createMovieState.cast],
+    //     genre:[createMovieState.genre],
+    //     backgroundImage: [createMovieState.backgroundImage],
+    //     poster:[createMovieState.poster]
+    //   }
+    // });
+
     setCreateMovieState({
       title: '',
       year: '',
@@ -34,7 +71,7 @@ function AddMovieModal() {
       backgroundImage: '',
       poster: '',
       src: ''
-    })
+    });
   };
 
   const handleChange = event => {
@@ -84,6 +121,7 @@ function AddMovieModal() {
                       placeholder="Year"
                       name="year"
                       onChange={handleChange}
+                      value={createMovieState.year}
                     />
                   </div>
                   <input
@@ -117,6 +155,7 @@ function AddMovieModal() {
                         placeholder="Actor as ...."
                         name="actorOne"
                         onChange={handleChange}
+                        required
                       />
                       <input
                         className="input-for-search form-control-plaintext"
@@ -190,4 +229,10 @@ function AddMovieModal() {
   );
 }
 
-export default AddMovieModal;
+export default compose(
+  graphql(movieQuery, { name: 'movieQuery' }),
+  graphql(deleteMovie, { name: 'deleteMovie' }),
+  graphql(updateMovie, { name: 'updateMovie' })
+)(AddMovieModal);
+
+// export default AddMovieModal;
