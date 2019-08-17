@@ -24,13 +24,13 @@ const deleteMovie = gql`
 `;
 
 const updateMovie = gql`
-  mutation($id: String!, $title: String!, $year: String!, $genre: String!) {
+  mutation($id: String!, $title: String!, $year: String!, $genre: String!,$creator: [String!]) {
     updateMovie(
       id: $id
       input: {
         title: $title
         year: $year
-        creator: ["hello this", "penny"]
+        creator: $creator
         genre: $genre
       }
     ) {
@@ -38,5 +38,9 @@ const updateMovie = gql`
     }
   }
 `;
+
+// const addMovie = gql `
+
+// `
 
 export { movieQuery, deleteMovie, updateMovie };
