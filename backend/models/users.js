@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-//add the user plugin...
+//add the user plugin..
 userSchema.plugin(uniqueValidator);
 
 //use the schema above to create a the user model
