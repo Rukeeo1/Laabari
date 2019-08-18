@@ -59,6 +59,9 @@ const addMovie = gql`
     $poster: String!
     $synopsis: String!
     $src: String!
+    $creator: [String!]
+    $genre: String!
+    $backgroundImage: String!
   ) {
     addMovie(
       title: $title
@@ -72,10 +75,10 @@ const addMovie = gql`
         "a very good movie"
         "another very good movie"
       ]
-      creator: ["rukee", "and willochs"]
+      creator: $creator
       cast: ["adesuwa etomi", "banki w"]
-      genre: "drama"
-      backgroundImage: "https://alexis.lindaikejisblog.com/photos/shares/5d57e2da72f96.jpg"
+      genre: $genre
+      backgroundImage: $backgroundImage
     ) {
       title
     }
