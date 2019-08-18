@@ -1,9 +1,17 @@
-import React from 'react';
-// import Navbar from '../navbar/Navbar';
+import React, { useState, useEffect } from 'react';
+import { graphql, compose } from 'react-apollo';
+import { movieQuery } from '../../queries/queries';
 import '../Homepage/Homepage.css';
 import Card from './Card';
 
-function Hompage() {
+function Hompage(props) {
+  const [movies, setMovies] = useState('');
+
+  useEffect(() => {
+    setMovies(props.movieQuery.movies);
+  });
+
+  //fetch movie//import query//store in state and append to homepage..
   return (
     <>
       <section className="mb-5">
@@ -13,7 +21,6 @@ function Hompage() {
             className="carousel slide carousel-fade"
             data-ride="carousel"
           >
-            {/* <Navbar /> */}
             {/* <!--Indicators--> */}
             <ol className="carousel-indicators">
               <li
@@ -114,4 +121,5 @@ function Hompage() {
   );
 }
 
-export default Hompage;
+// export default Hompage;
+export default compose(graphql(movieQuery, { name: 'movieQuery' }))(Hompage);
