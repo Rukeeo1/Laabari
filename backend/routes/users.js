@@ -33,6 +33,7 @@ router.post('/', async (req, res) => {
     res.send(savedUser);
   } catch (error) {
     console.log(error.message);
+    return res.send(error.message)
   }
 });
 
