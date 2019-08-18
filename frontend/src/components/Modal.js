@@ -1,77 +1,71 @@
 import React, { useState } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { movieQuery, deleteMovie, updateMovie } from '../queries/queries';
-
+import { movieQuery, deleteMovie, updateMovie, addMovie } from '../queries/queries';
 
 console.log(movieQuery);
 
 function AddMovieModal(props) {
-  // const [createMovieState, setCreateMovieState] = useState({
-  //   title: '',
-  //   year: '',
-  //   creator: '',
-  //   genre: '',
-  //   synopsis: '',
-  //   actorOne: '',
-  //   actorTwo: '',
-  //   actorThree: '',
-  //   actorFour: '',
-  //   backgroundImage: '',
-  //   poster: '',
-  //   src: ''
-  // });
   const [createMovieState, setCreateMovieState] = useState({});
-  console.log(createMovieState,'hello rukee')
+  console.log(createMovieState,'this is the dsttre')
+  console.log(createMovieState.backgroundImage)
 
   const saveChanges = () => {
-    console.log(createMovieState)
-  
-   const  variables = {
+
+    const variables = {
       title: createMovieState.title,
       year: createMovieState.year,
       poster: createMovieState.poster,
       src: createMovieState.src,
       synopsis: createMovieState.synopsis,
       similarMovies: [createMovieState.similarMovies],
-      creator: [createMovieState.createdBy],
-      cast:[createMovieState.actorOne,createMovieState.actorTwo,createMovieState.actorThree, createMovieState.actorFour],
-      genre:createMovieState.genre,
-      backgroundImage: [createMovieState.backgroundImage],
-      poster:[createMovieState.poster]
-    }
+      creator: [createMovieState.creator],
+      cast: [
+        createMovieState.actorOne,
+        createMovieState.actorTwo,
+        createMovieState.actorThree,
+        createMovieState.actorFour
+      ],
+      genre: createMovieState.genre,
+      backgroundImage: createMovieState.backgroundImage,
+      poster: createMovieState.poster
+    };
 
-    console.log(variables,'these are the variables')
-    // console.log(variables,'hello rukee')
-    // props.addMovie({
-    //   variables: {
-    //     title,
-    //     year,
-    //     poster,
-    //     src,
-    //     synopsis,
-    //     similarMovies: [createMovieState.similarMovies],
-    //     creator: [createMovieState.createdBy],
-    //     cast:[createMovieState.cast],
-    //     genre:[createMovieState.genre],
-    //     backgroundImage: [createMovieState.backgroundImage],
-    //     poster:[createMovieState.poster]
-    //   }
-    // });
-
-    setCreateMovieState({
-      title: '',
-      year: '',
-      creator: '',
-      genre: '',
-      synopsis: '',
-      actorOne: '',
-      actorTwo: '',
-      actorThree: '',
-      actorFour: '',
-      backgroundImage: '',
-      poster: '',
-      src: ''
+     console.log(variables,'hello rukee')
+    props.addMovie({
+      variables: {
+        title: createMovieState.title,
+        year: createMovieState.year,
+        poster: createMovieState.poster,
+        src: createMovieState.src,
+        synopsis: createMovieState.synopsis,
+        similarMovies: [createMovieState.similarMovies],
+        creator: [createMovieState.creator],
+        cast: [
+          createMovieState.actorOne,
+          createMovieState.actorTwo,
+          createMovieState.actorThree,
+          createMovieState.actorFour
+        ],
+        genre: createMovieState.genre,
+        backgroundImage: createMovieState.backgroundImage,
+        poster: createMovieState.poster
+      }
     });
+
+    // setCreateMovieState({
+    //   title: '',
+    //   year: '',
+    //   creator: '',
+    //   genre: '',
+    //   synopsis: '',
+    //   actorOne: '',
+    //   actorTwo: '',
+    //   actorThree: '',
+    //   actorFour: '',
+    //   backgroundImage: '',
+    //   poster: '',
+    //   src: ''
+    // });
   };
 
   const handleChange = event => {
@@ -184,7 +178,7 @@ function AddMovieModal(props) {
                     className="input-for-search form-control-plaintext"
                     type="text"
                     placeholder="Background Image...."
-                    name="backgroungImage"
+                    name="backgroundImage"
                     onChange={handleChange}
                   />
                   <input
@@ -232,7 +226,8 @@ function AddMovieModal(props) {
 export default compose(
   graphql(movieQuery, { name: 'movieQuery' }),
   graphql(deleteMovie, { name: 'deleteMovie' }),
-  graphql(updateMovie, { name: 'updateMovie' })
+  graphql(updateMovie, { name: 'updateMovie' }),
+  graphql(addMovie, { name: 'addMovie' }),
 )(AddMovieModal);
 
 // export default AddMovieModal;
