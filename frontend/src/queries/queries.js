@@ -10,6 +10,7 @@ const movieQuery = gql`
       synopsis
       creator
       genre
+      poster
     }
   }
 `;
