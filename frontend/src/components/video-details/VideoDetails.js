@@ -1,7 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import '../video-details/css/VideoDetails.css';
  
-function VideoDetails() {
+function VideoDetails({ match }) {
+  const [movie,setMovie] = useState('')
+
+  const movieId = match.params['id']
+
   return (
     <>
       <div class="container-fluid">
