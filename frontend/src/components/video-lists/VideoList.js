@@ -171,7 +171,7 @@ function VideoList(props) {
       {/* searchForm goes in  above */}
 
       <div className="table-responsive">
-        <table className="table table-striped">
+        <table className="table table-striped table-bordered">
           <thead>
             <tr>
               <th scope="col">#</th>
