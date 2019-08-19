@@ -1,10 +1,7 @@
 import React from 'react';
 
 function Card({ movies }) {
-  // console.log(movies.map(movie =>{
-  //   console.log(movie)
-  // }))
-  console.log(movies,'these are movies');
+  console.log(movies, 'these are movies');
   if (!movies) return '';
   return (
     <>
