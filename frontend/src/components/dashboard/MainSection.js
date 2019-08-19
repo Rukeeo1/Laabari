@@ -4,8 +4,7 @@ import Users from '../users-table/Users';
 import { Route, Switch } from 'react-router-dom';
 import VideoList from '../video-lists/VideoList';
 import Sidebar from './SideNav';
-import SearchForm from '../search-form/SearchForm'
-console.log(SearchForm,'hello rukee')
+import SearchForm from '../search-form/SearchForm';
 
 function MainSection() {
   return (
