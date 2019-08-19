@@ -60,15 +60,7 @@ function Hompage(props) {
                     type="video/mp4"
                   />
                 </video>
-                {/* <video
-                  // width="560"
-                  // height="315"
-                  className="video-fluid"
-                  src="https://www.youtube.com/embed/2N80qcVvzUU"
-                  frameBorder="0"
-                  allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                /> */}
+          
               </div>
               <div className="carousel-item">
                 <video className="video-fluid" autoPlay loop muted>
@@ -119,5 +111,5 @@ function Hompage(props) {
   );
 }
 
-// export default Hompage;
+
 export default compose(graphql(movieQuery, { name: 'movieQuery' }))(Hompage);
