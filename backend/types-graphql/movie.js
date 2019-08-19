@@ -25,6 +25,7 @@ const MovieType = new GraphQLObjectType({
     year: { type: new GraphQLNonNull(GraphQLString) },
     src: { type: new GraphQLNonNull(GraphQLString) },
     synopsis: { type: GraphQLString },
+    poster: {type :GraphQLString},
     similarMovies: { type: new GraphQLList(GraphQLString) },
     creator: { type: new GraphQLList(GraphQLString) },
     cast: { type: new GraphQLList(GraphQLString) },
