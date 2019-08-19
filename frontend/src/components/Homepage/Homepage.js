@@ -114,7 +114,7 @@ function Hompage(props) {
       </section>
       <div>{/* <Card /> */}</div>
       <div className="container test">
-        <Card />
+        <Card movies={movies}/>
       </div>
       hello world
     </>
