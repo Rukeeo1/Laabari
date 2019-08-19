@@ -112,11 +112,9 @@ function Hompage(props) {
         </div>
         {/* // <!--Carousel Wrapper--> */}
       </section>
-      <div>{/* <Card /> */}</div>
       <div className="container test">
-        <Card movies={movies}/>
+        <Card movies={movies} />
       </div>
-      hello world
     </>
   );
 }

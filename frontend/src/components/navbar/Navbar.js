@@ -10,7 +10,7 @@ function Navbar(props) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-transparent personal-styles">
+      <nav className="navbar navbar-expand-lg navbar-light bg-transparent personal-styles" style={{ height: '65px' }}>
         <div className="navbar-header">
           <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             Labaari

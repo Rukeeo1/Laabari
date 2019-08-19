@@ -14,9 +14,6 @@ const {
 const { MovieModel } = require('../models/movies');
 
 
-
-//console.log(MovieModel,'hello')
-
 const MovieType = new GraphQLObjectType({
   name: 'Movie',
   fields: () => ({
