@@ -6,6 +6,7 @@ const app = express();
 const userRouter = require('./routes/users');
 const morgan = require('morgan');
 const schema = require('./schema/schema');
+const movieRouter = require('./routes/movie');
 const graphQLHTTP = require('express-graphql');
 
 mongoose
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 app.use('/api/users', userRouter);
+app.use('/api/movies', movieRouter) 
 
 const port = process.env.PORT || 3001;
 
