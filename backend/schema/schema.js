@@ -53,33 +53,42 @@ const RootMutation = new GraphQLObjectType({
         year: { type: new GraphQLNonNull(GraphQLString) },
         poster: { type: new GraphQLNonNull(GraphQLString) },
         src: { type: new GraphQLNonNull(GraphQLString) },
-        synopsis: { type: GraphQLString },
+        synopsis: { type:  GraphQLString },
         similarMovies: { type: new GraphQLList(GraphQLString) },
         creator: { type: new GraphQLList(GraphQLString) },
         cast: { type: new GraphQLList(GraphQLString) },
         genre: { type: new GraphQLNonNull(GraphQLString) },
-        backgroundImage: { type: GraphQLNonNull(GraphQLString) }
+        backgroundImage: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve: (parent, args) => {
-        const { error } = validateMovie(args); //validation with joy
+        try {
+          console.log(args, ';;;;;;');
+          const { error } = validateMovie(args); //validation with joy
 
-        if (error) {
-          throw new Error(error.details[0].message);
+          if (error) {
+            console.log(error.message, 'ello');
+            throw new Error(error.details[0].message);
+          }
+
+          const movie = new MovieModel({
+            title: args.title,
+            year: args.year,
+            src: args.src,
+            poster: args.poster,
+            synopsis: args.synopsis,
+            similarMovies: args.similarMovies,
+            creator: args.creator,
+            cast: args.cast,
+            genre: args.genre,
+            backgroundImage: args.backgroundImage
+          });
+
+          movie.save();
+
+          return movie
+        } catch (error) {
+          return error.message
         }
-        const movie = new MovieModel({
-          title: args.title,
-          year: args.year,
-          src: args.src,
-          poster: args.poster,
-          synopsis: args.synopsis,
-          similarMovies: args.similarMovies,
-          creator: args.creator,
-          cast: args.cast,
-          genre: args.genre,
-          backgroundImage: args.backgroundImage
-        });
-
-        return movie.save();
       }
     },
     deleteMovie: {
@@ -136,17 +145,3 @@ const schema = new GraphQLSchema({
 
 module.exports = schema;
 
-// what and what is left for me to do...
-//find a movie created a by certain user
-//find a movie by year, title, genre...
-
-/**
- what i might simply do here is get all the contacts and loop through,
- if the contacts i = created id then we are good to go....
- do that at the front end....
- */
-
-/***
- *
- * how do you get the data from back end to fron end....
- */
