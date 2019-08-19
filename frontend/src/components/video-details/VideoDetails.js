@@ -1,52 +1,76 @@
-import React,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../video-details/css/VideoDetails.css';
- 
-function VideoDetails({ match }) {
-  const [movie,setMovie] = useState('')
+import axios from 'axios';
 
-  const movieId = match.params['id']
+function VideoDetails(props) {
+  const [movie, setMovie] = useState('');
+
+  const movieId = props.match.params['id'];
+
+  useEffect(() => {
+    getMovie();
+  }, []);
+
+  function getMovie() {
+    axios
+      .get(`http://localhost:3001/api/movies/${movieId}`)
+      .then(response => {
+        setMovie(response.data);
+       
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }
+
+  console.log(movie)
+  if (!movie) {
+    return '';
+  }
+
 
   return (
     <>
-      <div class="container-fluid">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 col-sm-12 pt-2 pb-2 mr-4">
+      <div className="container-fluid">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3 col-sm-12 pt-2 pb-2 mr-4">
               <img
-                src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-cover.jpg"
-                class="imageone img-responsive"
+                // src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-cover.jpg"
+                src={movie.poster}
+                className="imageone img-responsive"
                 alt="agirl"
               />
-              <button class="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton">
+              <button className="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton">
                 <span />
                 Play
               </button>
             </div>
-            <div class="col-md-5 col-sm-12 pt-2 pb-2 mr-4">
-              <div class="movie-info">
+            <div className="col-md-5 col-sm-12 pt-2 pb-2 mr-4">
+              <div className="movie-info">
                 <div>
-                  <h1>Alita: Battle Angel</h1>
-                  <h2>2019</h2>
+                  <h1>{movie.title}</h1>
+                  <h2>{movie.year}</h2>
                   <h2>Action / Adventure / Sci-fi / Thriller</h2>
-                  <p class="hidden-xs hidden-sm">
-                    <em class="pull-left">Available in:</em>
-                    <button class="my-primary video-quality-btn">
+                  <p className="hidden-xs hidden-sm">
+                    <em className="pull-left">Available in:</em>
+                    <button className="my-primary video-quality-btn">
                       3D.BluRay
                     </button>
-                    <button class="my-primary video-quality-btn">
+                    <button className="my-primary video-quality-btn">
                       720p.BluRay
                     </button>
-                    <button class="my-primary video-quality-btn">
+                    <button className="my-primary video-quality-btn">
                       1080p.BluRay
                     </button>
-                    <button class="my-primary video-quality-btn">
+                    <button className="my-primary video-quality-btn">
                       720p.WEB
                     </button>
                   </p>
                 </div>
                 <div className="synopsis-body">
                   <h2>Synopsis</h2>
-                  <p>
+                  {/* <p>
                     Alita is a creation from an age of despair. Found by the
                     mysterious Dr. Ido while trolling for cyborg parts, Alita
                     becomes a lethal, dangerous being. She cannot remember who
@@ -56,12 +80,13 @@ function VideoDetails({ match }) {
                     accomplish her true purpose, she must fight and kill. And
                     that is where Alita's true significance comes to bear. She
                     is an angel from heaven. She is an angel of death.
-                  </p>
+                  </p> */}
+                  <p>{movie.synopsis}</p>
                 </div>
               </div>
             </div>
             <div
-              class="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
+              className="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
               id="movie-related"
               style={{ wordWrap: 'break-word' }}
             >
@@ -107,16 +132,16 @@ function VideoDetails({ match }) {
         </div>
 
         <div id="screenshots" className="row">
-          <div class="screenshot">
+          <div className="screenshot">
             <a
-              class="youtube cboxElement"
+              className="youtube cboxElement"
               href="https://www.youtube.com/embed/QvHv-99VfcU?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3"
               id="playTrailer"
             >
-              <span class="btn-play-trailer" />
+              <span className="btn-play-trailer" />
             </a>
             <a
-              class="screenshot-group imghov cboxElement"
+              className="screenshot-group imghov cboxElement"
               href="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/large-screenshot1.jpg"
             >
               <img
@@ -125,16 +150,16 @@ function VideoDetails({ match }) {
               />
             </a>
           </div>
-          <div class="screenshot">
+          <div className="screenshot">
             <a
-              class="youtube cboxElement"
+              className="youtube cboxElement"
               href="https://www.youtube.com/embed/QvHv-99VfcU?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3"
               id="playTrailer"
             >
-              <span class="btn-play-trailer" />
+              <span className="btn-play-trailer" />
             </a>
             <a
-              class="screenshot-group imghov cboxElement"
+              className="screenshot-group imghov cboxElement"
               href="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/large-screenshot1.jpg"
             >
               <img
@@ -143,16 +168,16 @@ function VideoDetails({ match }) {
               />
             </a>
           </div>
-          <div class="screenshot">
+          <div className="screenshot">
             <a
-              class="youtube cboxElement"
+              className="youtube cboxElement"
               href="https://www.youtube.com/embed/QvHv-99VfcU?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3"
               id="playTrailer"
             >
-              <span class="btn-play-trailer" />
+              <span className="btn-play-trailer" />
             </a>
             <a
-              class="screenshot-group imghov cboxElement"
+              className="screenshot-group imghov cboxElement"
               href="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/large-screenshot1.jpg"
             >
               <img
