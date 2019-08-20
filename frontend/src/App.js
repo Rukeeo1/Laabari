@@ -24,7 +24,6 @@ function App() {
             <Route path="/" exact component={Homepage} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
-            {/* <Route path="/videos" component={VideoDetails} /> */}
             <Route path="/videos/:id" component={VideoDetails} />
             <Route path="/dashboard" component={MainSection} />
           </Switch>
