@@ -23,6 +23,11 @@ function Navbar(props) {
     setUser(user)
   })
 
+  const hello = () => {
+    alert('hello')
+    localStorage.removeItem('user');
+  }
+
   return (
     <>
       <nav
@@ -60,10 +65,10 @@ function Navbar(props) {
             {getUserEmail()}
           </div>
           <div className="ml-auto">
-            {loginStatus ? (
+            {user ? (
               <Link to="/login">
                 {' '}
-                <button className="btn btn-danger navbar-btn">Log Out</button>
+                <button className="btn btn-danger navbar-btn" onClick={hello}>Log Out</button>
               </Link>
             ) : (
               <Link to="/login">
