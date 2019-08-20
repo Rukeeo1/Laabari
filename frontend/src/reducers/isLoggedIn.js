@@ -1,25 +1,24 @@
 const initialState = {
-  login: false
-}
+  login: false,
+  userEmail: ""
 
-const loggedInReducer = (state = false, action) => {
+};
+
+const loggedInReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ALTERNATE_LOGIN_STATUS':
-      return !state; 
+      return {
+        ...state,
+        login: !state.login
+      };
+    case 'USER_EMAIL':
+      return{
+        ...state,
+       userEmail : action.payload
+      }
     default:
       return state;
   }
 };
-
-
-// const loggedInReducer = (state = false, action) => {
-//   console.log(initialState)
-//   switch (action.type) {
-//     case 'ALTERNATE_LOGIN_STATUS':
-//       return !state.login; 
-//     default:
-//       return state;
-//   }
-// };
 
 export default loggedInReducer;
