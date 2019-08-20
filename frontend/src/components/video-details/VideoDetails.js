@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { alternateLogin, updateUserEmail } from '../../actions/index';
 import '../video-details/css/VideoDetails.css';
 import axios from 'axios';
 
 function VideoDetails(props) {
   const [movie, setMovie] = useState('');
   const movieId = props.match.params['id'];
+  //get the guy from state...
 
   useEffect(() => {
     getMovie();
   }, []);
+
 
   function getMovie() {
     axios
@@ -21,30 +26,25 @@ function VideoDetails(props) {
       });
   }
 
-  const hello = () => {
-    alert('hello rukee');
-    console.log('hello rukee');
-  };
-
-  if (!movie) {
-    return '';
-  }
-
   return (
     <>
       <div className="container-fluid">
-        <div className="container" >
+        <div className="container">
           <div className="row">
-            <div className="col-md-3 col-sm-12 pt-2 pb-2 mr-4" style={{backgroundImage:`url:(${movie.poster})`, color:"red" , backgroundPosition: 'center'}}>
+            <div
+              className="col-md-3 col-sm-12 pt-2 pb-2 mr-4"
+              style={{
+                backgroundImage: `url:(${movie.poster})`,
+                color: 'red',
+                backgroundPosition: 'center'
+              }}
+            >
               <img
                 src={movie.poster}
                 className="imageone img-responsive"
                 alt="agirl"
               />
-              <button
-                className="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton"
-                onClick={() => hello()}
-              >
+              <button className="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton">
                 <span />
                 Play
               </button>
