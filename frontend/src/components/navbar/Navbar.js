@@ -1,27 +1,45 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { alternateLogin } from '../../actions/index';
-import '../navbar/css/Navabar.css'
+import '../navbar/css/Navabar.css';
 
 function Navbar(props) {
   const loginStatus = useSelector(state => state.isLoggedIn);
   const dispatch = useDispatch();
+  const [user, setUser] = useState('')
+  
+
+  const getUserEmail = () => {
+    if(user)return(
+      <h1>{user.email}</h1>
+    )
+
+    return ''
+  };
+
+  useEffect(()=>{
+    const user = JSON.parse(localStorage.getItem('user'));
+    setUser(user)
+  })
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-transparent personal-styles" style={{ height: '65px' }}>
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-transparent personal-styles"
+        style={{ height: '65px' }}
+      >
         <div className="navbar-header">
           <Link className="navbar-brand" to="/" style={{ color: 'white' }}>
             Labaari
           </Link>
-          {/* <button
+          <button
             onClick={() => {
               dispatch(alternateLogin());
             }}
           >
             hello + {loginStatus}
-          </button> */}
+          </button>
         </div>
         <button
           className="navbar-toggler"
@@ -38,6 +56,9 @@ function Navbar(props) {
           className="collapse navbar-collapse mr-auto"
           id="navbarTogglerDemo01"
         >
+          <div className="ml-auto" style={{ color: 'white' }}>
+            {getUserEmail()}
+          </div>
           <div className="ml-auto">
             {loginStatus ? (
               <Link to="/login">
@@ -50,10 +71,6 @@ function Navbar(props) {
                 <button className="btn btn-danger navbar-btn">Sign In</button>
               </Link>
             )}
-            {/* <Link to="/login">
-              {' '}
-              <button className="btn btn-danger navbar-btn">Sign In</button>
-            </Link> */}
           </div>
         </div>
       </nav>
