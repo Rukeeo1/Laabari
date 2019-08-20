@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function VideoDetails(props) {
   const [movie, setMovie] = useState('');
-
   const movieId = props.match.params['id'];
 
   useEffect(() => {
@@ -16,32 +15,36 @@ function VideoDetails(props) {
       .get(`http://localhost:3001/api/movies/${movieId}`)
       .then(response => {
         setMovie(response.data);
-       
       })
       .catch(error => {
         console.log(error.message);
       });
   }
 
-  console.log(movie)
+  const hello = () => {
+    alert('hello rukee');
+    console.log('hello rukee');
+  };
+
   if (!movie) {
     return '';
   }
 
-
   return (
     <>
       <div className="container-fluid">
-        <div className="container">
+        <div className="container" >
           <div className="row">
-            <div className="col-md-3 col-sm-12 pt-2 pb-2 mr-4">
+            <div className="col-md-3 col-sm-12 pt-2 pb-2 mr-4" style={{backgroundImage:`url:(${movie.poster})`, color:"red" , backgroundPosition: 'center'}}>
               <img
-                // src="https://img.yts.lt/assets/images/movies/alita_battle_angel_2019/medium-cover.jpg"
                 src={movie.poster}
                 className="imageone img-responsive"
                 alt="agirl"
               />
-              <button className="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton">
+              <button
+                className="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton"
+                onClick={() => hello()}
+              >
                 <span />
                 Play
               </button>
@@ -70,17 +73,6 @@ function VideoDetails(props) {
                 </div>
                 <div className="synopsis-body">
                   <h2>Synopsis</h2>
-                  {/* <p>
-                    Alita is a creation from an age of despair. Found by the
-                    mysterious Dr. Ido while trolling for cyborg parts, Alita
-                    becomes a lethal, dangerous being. She cannot remember who
-                    she is, or where she came from. But to Dr. Ido, the truth is
-                    all too clear. She is the one being who can break the cycle
-                    of death and destruction left behind from Tiphares. But to
-                    accomplish her true purpose, she must fight and kill. And
-                    that is where Alita's true significance comes to bear. She
-                    is an angel from heaven. She is an angel of death.
-                  </p> */}
                   <p>{movie.synopsis}</p>
                 </div>
               </div>

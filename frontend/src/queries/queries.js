@@ -1,5 +1,14 @@
 import { gql } from 'apollo-boost';
 
+// const singleMovieQuery = gql`
+// {
+// movie(id:"5d587fb47b458620787b86dc"){
+//   title
+// }
+// }
+// `
+
+
 const movieQuery = gql`
   {
     movies {

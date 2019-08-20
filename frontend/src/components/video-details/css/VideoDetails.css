@@ -154,9 +154,8 @@
 */
 
 #screenshots {
-  /* justify-content: center; */
-  margin-left: 130px;
-  margin-top: 50px;
+  justify-content: center;
+  margin-top: 1.6em;
 }
 
 #screenshots img {

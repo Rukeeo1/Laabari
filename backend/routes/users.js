@@ -74,7 +74,7 @@ router.post('/login', async (req, res) => {
   console.log(user,'hello i am user')
 
   if (!user) return res.status(400).send('Email Not Found!!!');
-console.log('i came here')
+
   const password = user.password === req.body.password ? true : false;
 
   if (!password) return res.status(400).send('Invalid password');

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import { formValid } from './helper';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { alternateLogin } from '../../actions/index';
 import './css/Login.css';
-
 
 const emailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
@@ -20,7 +19,8 @@ class Login extends React.Component {
         mobile: '',
         password: ''
       },
-      redirect: false
+      redirect: false,
+      auth: false
     };
   }
   //bring in the state...
@@ -33,14 +33,16 @@ class Login extends React.Component {
         email: this.state.email,
         password: this.state.password
       };
-      console.log(userEmail, 'hello oo');
 
       axios
         .post('http://localhost:3001/api/users/login', userEmail)
         .then(response => {
-          console.log(response);
           this.setState({ redirect: true });
-          this.props.onLogin();
+          this.props.onLogin();//udpates the global state...
+          
+          //on sucessful login do the following:
+          localStorage.setItem('user', JSON.stringify(response.data))
+          localStorage.setItem('auth',true)
         })
         .catch(err => {
           console.log(err.message);
@@ -52,33 +54,6 @@ class Login extends React.Component {
             }
           });
         });
-
-      //     axios
-      //       .get(`http://localhost:3001/api/users/` + userEmail)
-      //       .then(response => {
-      //         console.log(response);
-      //         if (response.data.length === 0) {
-      //           this.setState({
-      //             formErrors: {
-      //               email: 'please ensure email is correct',
-      //               password: 'ensure your password is correct'
-      //             }
-      //           });
-      //           return; //this return breaks the function if there are form errors....
-      //         }
-      //         //you can do a further password check here which i shall skip...
-
-      //         this.setState({ redirect: true });
-      //         this.props.onLogin(); //this is tobe called on login sucess
-      //         const user = response.data;
-      //         console.log(user);
-      //         localStorage.setItem('user', JSON.stringify(user)); //store the item in local storage...
-      //       })
-      //       .catch(error => {
-      //         console.log(error.message, 'hello rushed');
-      //       });
-      //   }
-      // };
     }
   };
 
@@ -104,6 +79,8 @@ class Login extends React.Component {
 
     this.setState({ formErrors, [name]: value }, () => {});
   };
+
+ 
 
   render() {
     const { formErrors } = this.state;
@@ -178,7 +155,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogin: () => dispatch(alternateLogin())
+    // onLogin: () => dispatch(alternateLogin())
+    onLogin: () => dispatch({type:"ALTERNATE_LOGIN_STATUS"})
   };
 };
 

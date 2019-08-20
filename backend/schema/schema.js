@@ -13,7 +13,7 @@ const {
 const { MovieModel, validateMovie } = require('../models/movies');
 const { MovieType, MovieInput } = require('../types-graphql/movie');
 const { findMovie } = require('../controllers/movies-controler');
-console.log(findMovie, 'hello');
+
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -23,7 +23,11 @@ const RootQuery = new GraphQLObjectType({
       type: MovieType,
       description: 'returns a single movie',
       args: { id: { type: GraphQLString } },
-      resolve: (parent, args) => MovieModel.findById(args.id)
+      resolve: (parent, args) => {
+        console.log(args,'hello')
+        return MovieModel.findById(args.id)
+      }
+
     },
     movies: {
       type: new GraphQLList(MovieType),
