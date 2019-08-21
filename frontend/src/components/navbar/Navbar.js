@@ -1,32 +1,35 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { alternateLogin } from '../../actions/index';
+import { alternateLogin, updateUserEmail } from '../../actions/index';
 import '../navbar/css/Navabar.css';
 
 function Navbar(props) {
-  const loginStatus = useSelector(state => state.isLoggedIn);
+  let loginStatus = useSelector(state => state.isLoggedIn.login);
+  const user =  useSelector(state => state.isLoggedIn.userEmail).email;
+  console.log(user)
   const dispatch = useDispatch();
-  const [user, setUser] = useState('')
-  
+ const [userLocalStorage, setUserLocal] = useState(user);
 
-  const getUserEmail = () => {
-    if(user)return(
-      <h1>{user.email}</h1>
-    )
-
-    return ''
-  };
-
-  useEffect(()=>{
+  useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    setUser(user)
-  })
+    setUserLocal(user);
+  }, []);
+console.log(userLocalStorage,'helo')
 
-  const hello = () => {
-    alert('hello')
+  // const getUserEmail = () => {
+  //   if (user) {
+  //     return <h1>{user.email}</h1>;
+  //   }else{
+  //     return '';
+  //   }
+  // };
+
+  const logOut = () => {
+    alert('hello');
     localStorage.removeItem('user');
-  }
+    // setUser('');
+  };
 
   return (
     <>
@@ -41,6 +44,8 @@ function Navbar(props) {
           <button
             onClick={() => {
               dispatch(alternateLogin());
+              dispatch(updateUserEmail(''))
+
             }}
           >
             hello + {loginStatus}
@@ -62,13 +67,16 @@ function Navbar(props) {
           id="navbarTogglerDemo01"
         >
           <div className="ml-auto" style={{ color: 'white' }}>
-            {getUserEmail()}
+            {user? user : ''}
+            {/* {getUserEmail()} */}
           </div>
           <div className="ml-auto">
             {user ? (
               <Link to="/login">
                 {' '}
-                <button className="btn btn-danger navbar-btn" onClick={hello}>Log Out</button>
+                <button className="btn btn-danger navbar-btn" onClick={logOut}  >
+                  Log Out
+                </button>
               </Link>
             ) : (
               <Link to="/login">

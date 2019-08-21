@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 function Card({ movies }) {
-  console.log(movies, 'these are movies');
 
   if (!movies) return '';
   return (

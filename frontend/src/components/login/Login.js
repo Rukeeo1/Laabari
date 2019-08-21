@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { formValid } from './helper';
 import { Link, Redirect } from 'react-router-dom';
@@ -38,11 +38,12 @@ class Login extends React.Component {
         .post('http://localhost:3001/api/users/login', userEmail)
         .then(response => {
           this.setState({ redirect: true });
-          this.props.onLogin();//udpates the global state...
-          
+          this.props.onLogin(); //udpates the global state...
+          this.props.saveUser(userEmail);
+
           //on sucessful login do the following:
-          localStorage.setItem('user', JSON.stringify(response.data))
-          localStorage.setItem('auth',true)
+          localStorage.setItem('user', JSON.stringify(response.data));
+          localStorage.setItem('auth', true);
         })
         .catch(err => {
           console.log(err.message);
@@ -79,8 +80,6 @@ class Login extends React.Component {
 
     this.setState({ formErrors, [name]: value }, () => {});
   };
-
- 
 
   render() {
     const { formErrors } = this.state;
@@ -156,7 +155,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     // onLogin: () => dispatch(alternateLogin())
-    onLogin: () => dispatch({type:"ALTERNATE_LOGIN_STATUS"})
+    onLogin: () => dispatch({ type: 'ALTERNATE_LOGIN_STATUS' }),
+    saveUser: email => dispatch({ type: 'USER_EMAIL', payload: email })
   };
 };
 
