@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { alternateLogin, updateUserEmail } from '../../actions/index';
 import '../video-details/css/VideoDetails.css';
 import axios from 'axios';
 
 function VideoDetails(props) {
+  console.log('this is videosdetails', props)
   const [movie, setMovie] = useState('');
   const movieId = props.match.params['id'];
-  //get the guy from state...
 
   useEffect(() => {
     getMovie();
   }, []);
-
 
   function getMovie() {
     axios
@@ -28,7 +27,7 @@ function VideoDetails(props) {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid video-details-div">
         <div className="container">
           <div className="row">
             <div
@@ -46,7 +45,7 @@ function VideoDetails(props) {
               />
               <button className="torrent-modal-download button-green-download2-big hidden-xs hidden-sm playbutton">
                 <span />
-                Play
+                <Link to={`/player/${movie._id}`}>Play</Link>
               </button>
             </div>
             <div className="col-md-5 col-sm-12 pt-2 pb-2 mr-4">

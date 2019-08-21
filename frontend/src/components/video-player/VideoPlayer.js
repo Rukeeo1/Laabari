@@ -3,13 +3,7 @@ import axios from 'axios';
 
 function VideoPlayer(props) {
   const movieId = props.movieId;
-  console.log(movieId, 'hello');
-  //fectch movie
-  //set state
-  //return <videoplayer className=""></videoplayer>
   const [movie, setMovie] = useState('');
-  console.log(movie);
-  console.log(movie._id, 'this is the movies id');
 
   useEffect(() => {
     getMovie();
@@ -26,16 +20,14 @@ function VideoPlayer(props) {
       });
   }
   return (
-
-       <iframe
-      width="560"
+    <iframe
+      width="100%"
       height="315"
       src={movie.src}
       frameBorder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
-    /> 
-   
+    />
   );
 }
 
