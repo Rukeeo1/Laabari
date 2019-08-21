@@ -8,6 +8,7 @@ import Login from './components/login/Login';
 import SignUp from './components/signup/SignUp';
 import VideoDetails from './components/video-details/VideoDetails';
 import MainSection from './components/dashboard/MainSection';
+import PlayerPage from './components/playerpage/PlayerPage'
 import './App.css';
 
 const client = new AppolloClient({
@@ -26,6 +27,7 @@ function App() {
             <Route path="/signup" component={SignUp} />
             <Route path="/videos/:id" component={VideoDetails} />
             <Route path="/dashboard" component={MainSection} />
+            <Route papth='/player/:id' component={PlayerPage} />
           </Switch>
         </div>
       </Router>
