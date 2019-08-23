@@ -20,6 +20,7 @@ const movieQuery = gql`
       creator
       genre
       poster
+      src
     }
   }
 `;

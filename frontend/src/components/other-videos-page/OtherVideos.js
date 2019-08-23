@@ -3,6 +3,7 @@ import { movieQuery } from '../../queries/queries';
 import { graphql, compose } from 'react-apollo';
 import '../other-videos-page/css/OtherVideos.css';
 
+//this component needs to be refactored to make it more dynamic
 function OtherVideos(props) {
   const [movies, setMovies] = useState();
 
@@ -10,14 +11,13 @@ function OtherVideos(props) {
   useEffect(() => {
     setMovies(props.movieQuery.movies);
   });
-  console.log(movies);
 
   return (
     <div className="scrollmenu container" style={{ width: '100%' }}>
       {tenMovie.map((movie, index) => {
         return (
-          <a key={index} >
-             <img src={movie.poster} />
+          <a key={index}>
+            <img src={movie.poster} />
             {movie.title}
           </a>
         );
