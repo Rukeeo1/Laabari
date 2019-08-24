@@ -6,6 +6,7 @@ import Card from './Card';
 
 function Hompage(props) {
   const [movies, setMovies] = useState('');
+  console.log(movies,'homepage')
 
   useEffect(() => {
     setMovies(props.movieQuery.movies);
