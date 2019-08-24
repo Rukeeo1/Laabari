@@ -34,8 +34,8 @@ class SignUp extends React.Component {
         plan: 'no plan yet'
       };
 
-      console.log(userObject, 'this is the users object');
-      // http://localhost:3001/api/users
+
+   
       axios
         .post('http://localhost:3001/api/users', userObject)
         .then(response => {
